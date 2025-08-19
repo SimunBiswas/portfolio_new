@@ -12,14 +12,14 @@ export default function Home() {
   useEffect(() =>{
     const timer = setTimeout(() => {
       setShow(false);
-    }, 1000); 
+    }, 1250); 
 
     return () => clearTimeout(timer);
   })
 
 
   return (
-    <div className='relative h-screen w-screen bg-black font-orbitron tracking-wide'>
+    <div className='relative h-screen w-screen bg-[#0f0f0f] font-orbitron tracking-wide'>
       <AnimatePresence>
         {show && (
           <div className="fixed top-0 left-0 w-screen h-screen z-50">
@@ -33,7 +33,9 @@ export default function Home() {
          <>
            {/* <StickyNav /> */}
            <div className='w-screen h-full flex justify-center items-center bg-[#0f0f0f]'>
-              <Carousel_1 />
+              <div className='top-0 left-0 w-full h-full flex justify-center items-center'>
+                <Carousel_1 />
+              </div>
            </div>
          </>}
       </div>

@@ -3,10 +3,10 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useCallback, useEffect } from "react";
 import Button from "./Button";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const images = [
-  { src: "/images/AON.png", title: "AON", href: "/intro/AON", grad_from : "#83D9F4", grad_via : "#3C7E9E", grad_to: "#000B13" },
+  { src: "/images/AON.png", title: "Abyss of Neptune", href: "/intro/AON", grad_from : "#83D9F4", grad_via : "#3C7E9E", grad_to: "#000B13" },
   { src: "/images/OTWD.png", title: "Over the Walking Dead", href: "/intro/OTWD", grad_from : "#E29999", grad_via : "#AF4848", grad_to: "#5D0D0D" },
   { src: "/images/Jedi.png", title: "Star Wars Jedi Survivor", href: "/intro/Jedi", grad_from : "#CA843A", grad_via : "#CA843A", grad_to: "#110602" },
   { src: "/images/Vanguard.png", title: "Call of Duty Vanguard", href: "/intro/Vanguard", grad_from : "#FCCAAB", grad_via : "#5A4A1F", grad_to: "#110B0C" },
@@ -75,7 +75,7 @@ const Carousel_1 = () => {
   };
 
   return (
-    <div className="flex items-center justify-center flex-col h-screen bg-[#0f0f0f] relative overflow-hidden w-full">
+    <div className="flex items-center justify-start flex-col h-[300px] md:h-[200px] lg:h-screen bg-[#0f0f0f] relative overflow-hidden w-full">
       {/* Carousel Container */}
       <div className="relative w-[120%] h-full flex justify-center items-center cursor-pointer">
         {/* Left Curved Gradient Overlay */}
@@ -104,22 +104,24 @@ const Carousel_1 = () => {
               custom={variant === "left" || variant === "right" ? isHovered : undefined}
               variants={imageVariants}
               animate={variant}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.25, }}
               whileHover={isCenter ? { scale: 2 } : undefined}
             >
               {/* Image */}
               <motion.img
                 src={img.src}
                 alt={`img-${i}`}
-                className="rounded-xl shadow-lg cursor-pointer w-full h-full object-cover fl"
+                className="rounded-xl shadow-lg cursor-pointer w-full h-full object-cover"
               />
 
               {/* Center Hover Overlay */}
               {isCenter && (
               <AnimatePresence>
                 <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: isHovered ? 1 : 0 }}
+                  key="overlay"   // 🔑 unique key
+
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: isHovered ? 1 : 0 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.25 }}
                   className="absolute inset-0 -z-10 rounded-lg blur-lg"
@@ -129,6 +131,8 @@ const Carousel_1 = () => {
                 />
 
                 <motion.div
+                      key="caption"   // 🔑 another unique key
+
                   style={{
                     fontSize: "clamp(0.8rem, 2vw, 0.8rem)",
                   }}
@@ -139,13 +143,13 @@ const Carousel_1 = () => {
                     scale: isHovered ? 1 : 0.95,
                   }}
                   transition={{ duration: 0.25 }}
-                  className="absolute w-full h-full top-0 text-white rounded-lg flex justify-between items-end bg-gradient-to-b from-transparent to-black/60"
+                  className="absolute w-full h-full top-0 text-white rounded-lg flex justify-center items-end bg-gradient-to-b from-transparent to-black/60"
                 >
-                  <div className="w-full flex justify-between items-center pb-2">
-                    <div className="uppercase tracking-wider font-semibold z-10 ps-9">
+                  <div className="absolute top-[68%] md:top-[78%] lg:top-[85%] w-[200%] lg:w-full flex justify-between items-center scale-50 lg:scale-100 pb-0 lg:pb-2 " >
+                    <div className="uppercase tracking-wider font-semibold text-xs scale-75 lg:text-sm z-10 ps-0 lg:ps-2 ">
                       {img.title}
                     </div>
-                    <div className="scale-75 z-10">
+                    <div className="scale-50 z-10 ">
                       <Button text="View Project" href={img.href} />
                     </div>
                   </div>
@@ -160,16 +164,16 @@ const Carousel_1 = () => {
 
       {/* Navigation Buttons */}
       <button
-        className="absolute left-8 top-1/2 -translate-y-1/2 z-[60] bg-black/40 p-2 rounded-full hover:bg-black/60"
+        className="absolute left-[40%] md:left-[45%] lg:left-[46%] top-[90%] -translate-y-1/2 z-[60] bg-black/40 p-2 rounded-full hover:bg-black/60"
         onClick={() => paginate(-1)}
       >
-        <ArrowLeft className="text-white w-6 h-6" />
+        <ChevronLeft className="text-white w-6 h-6" />
       </button>
       <button
-        className="absolute right-8 top-1/2 -translate-y-1/2 z-[60] bg-black/40 p-2 rounded-full hover:bg-black/60"
+        className="absolute right-[40%] md:right-[45%] lg:right-[46%] top-[90%] -translate-y-1/2 z-[60] bg-black/40 p-2 rounded-full hover:bg-black/60"
         onClick={() => paginate(1)}
       >
-        <ArrowRight className="text-white w-6 h-6" />
+        <ChevronRight className="text-white w-6 h-6" />
       </button>
 
       
