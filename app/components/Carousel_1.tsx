@@ -117,6 +117,7 @@ const Carousel_1 = () => {
               {/* Center Hover Overlay */}
               {isCenter && (
               <AnimatePresence>
+                {isHovered && 
                 <motion.div
                   key="overlay"   // 🔑 unique key
 
@@ -128,10 +129,9 @@ const Carousel_1 = () => {
                   style={{
                     backgroundImage: `linear-gradient(to bottom, ${img.grad_from}, ${img.grad_via}, ${img.grad_to})`,
                   }}
-                />
-
-                <motion.div
-                      key="caption"   // 🔑 another unique key
+                />}
+              <motion.div
+                key="caption"   // 🔑 another unique key
 
                   style={{
                     fontSize: "clamp(0.8rem, 2vw, 0.8rem)",
