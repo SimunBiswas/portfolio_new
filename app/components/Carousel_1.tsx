@@ -11,8 +11,9 @@ const images = [
   { src: "/images/Jedi.png", title: "Star Wars Jedi Survivor", href: "/intro/Jedi", grad_from : "#CA843A", grad_via : "#CA843A", grad_to: "#110602" },
   { src: "/images/Vanguard.png", title: "Call of Duty Vanguard", href: "/intro/Vanguard", grad_from : "#FCCAAB", grad_via : "#5A4A1F", grad_to: "#110B0C" },
 ];
+interface Carousel1Props { loaded: boolean; } 
 
-const Carousel_1 = () => {
+const Carousel_1 = ({ loaded }: Carousel1Props) => {
   const [centerIndex, setCenterIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [clickDisabled, setClickDisabled] = useState(false);
@@ -62,10 +63,11 @@ const Carousel_1 = () => {
       background: "linear-gradient(to bottom, transparent, rgba(0,0,0,0.6))",
     }),
     hidden: {
-      scale: 0,
-      opacity: 0,
-      zIndex: 0,
+      scale: 1,
+      opacity: 1,
+      zIndex: 1,
       pointerEvents: "none",
+      transition : loaded ? {delay : 0.25} : {delay : 15}
     },
   };
 
@@ -75,7 +77,7 @@ const Carousel_1 = () => {
   };
 
   return (
-    <div className="flex items-center justify-start flex-col h-[300px] md:h-[200px] lg:h-screen bg-[#0f0f0f] relative overflow-hidden w-full">
+    <div className="flex items-center justify-start flex-col h-[300px] md:h-[200px] lg:h-screen bg-black relative overflow-hidden w-full">
       {/* Carousel Container */}
       <div className="relative w-[120%] h-full flex justify-center items-center cursor-pointer">
         {/* Left Curved Gradient Overlay */}
@@ -104,7 +106,7 @@ const Carousel_1 = () => {
               custom={variant === "left" || variant === "right" ? isHovered : undefined}
               variants={imageVariants}
               animate={variant}
-              transition={{ duration: 0.25, }}
+              transition={{ duration: 0.35, }}
               whileHover={isCenter ? { scale: 2 } : undefined}
             >
               {/* Image */}
