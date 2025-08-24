@@ -11,9 +11,9 @@ const images = [
   { src: "/images/Jedi.png", title: "Star Wars Jedi Survivor", href: "/intro/Jedi", grad_from : "#CA843A", grad_via : "#CA843A", grad_to: "#110602" },
   { src: "/images/Vanguard.png", title: "Call of Duty Vanguard", href: "/intro/Vanguard", grad_from : "#FCCAAB", grad_via : "#5A4A1F", grad_to: "#110B0C" },
 ];
-interface Carousel1Props { loaded: boolean; } 
+// interface Carousel1Props { loaded: boolean; } 
 
-const Carousel_1 = ({ loaded }: Carousel1Props) => {
+const Carousel_1 = () => {
   const [centerIndex, setCenterIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [clickDisabled, setClickDisabled] = useState(false);
@@ -67,7 +67,6 @@ const Carousel_1 = ({ loaded }: Carousel1Props) => {
       opacity: 1,
       zIndex: 1,
       pointerEvents: "none",
-      transition : loaded ? {delay : 0.25} : {delay : 15}
     },
   };
 
@@ -106,8 +105,9 @@ const Carousel_1 = ({ loaded }: Carousel1Props) => {
               custom={variant === "left" || variant === "right" ? isHovered : undefined}
               variants={imageVariants}
               animate={variant}
-              transition={{ duration: 0.35, }}
+              transition={{ duration: 0.75, delay : 9 }}
               whileHover={isCenter ? { scale: 2 } : undefined}
+              
             >
               {/* Image */}
               <motion.img

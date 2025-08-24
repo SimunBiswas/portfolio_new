@@ -2,7 +2,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import { Star } from "lucide-react";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Carousel_1 from "./Carousel_1";
 // import Carousel_1 from "./Carousel_1";
 
@@ -32,7 +32,7 @@ const childVariants_1: Variants = {
       type: "tween",
       duration: 7,
       ease: "easeOut",
-      x: { delay: 0, duration: 0.15 },
+      x: { delay: 0, duration: 0.25 },
       y: { delay: 7, duration: 2 },
       scale: { delay: 7.05, duration: 2 },repeat: 0
     },
@@ -104,7 +104,7 @@ const nested_childVariants_2: Variants = {
     color: ["#fff", "#aba9a9", "#000"],
     visibility: ["visible", "visible", "hidden"],
     transition: {
-      duration: 2,
+      duration: 1.5,
       type: "tween",
       ease: "easeOut",
       delay: custom.delay,
@@ -112,13 +112,31 @@ const nested_childVariants_2: Variants = {
   }),
 };
 
-const IntroBg_1 = () => {
-    const [loaded, setLoaded] = useState(false);
+const carouselVarient: Variants = {
+  hidden: {
+    scale: 0,
+  },
+  visible: {
+    scale: [0, 1, 1],
+    transition: {
+      duration: 1.75,
+      delay: 7.25,
+      times : [0, 0.55, 1],
+      type: "tween",
+      ease: "easeOut",
+      when: "beforeChildren",
+      staggerChildren: 5,
+    },
+  },
+};
 
-    useEffect(() => {
-        const timer = setTimeout(() => setLoaded(true), 15000); // first load delay
-        return () => clearTimeout(timer);
-    }, []);
+const IntroBg_1 = () => {
+    // const [loaded, setLoaded] = useState(false);
+
+    // useEffect(() => {
+    //     const timer = setTimeout(() => setLoaded(true), 1000); // first load delay
+    //     return () => clearTimeout(timer);
+    // }, []);
 
   return (
     <div className="absolute h-full w-screen bg-black flex flex-col">
@@ -130,6 +148,7 @@ const IntroBg_1 = () => {
         animate="visible"
         style={{ transformOrigin: "center center" }}
         viewport={{ once: true }}
+        // onAnimationComplete={() => setLoaded(true)}
       >
         {/* First Shape */}
         <motion.div
@@ -236,17 +255,18 @@ const IntroBg_1 = () => {
         {/* Carousel Layer */}
         <motion.div
           className="absolute w-full h-full top-0 left-0 flex justify-center items-center"
-          initial={{ scale: 0, zIndex: -10 }}
-          animate={{ scale: 1, zIndex: 10 }}
-          transition={{ duration: 2, delay: 7.95, ease: "easeIn", when: "beforeChildren" , staggerChildren: 5}}
-          style={{ isolation: "isolate" }}
+          variants={carouselVarient}
+        //   initial={{ scale: 0.75, zIndex: -10 }}
+        //   animate={loaded ? { scale: 1, zIndex: 10 } : {}} // 👈 only animate if parent done
+        //   transition={{ duration: 2, delay: 7.95, ease: "easeIn", when: "beforeChildren" , staggerChildren: 5}}
+        //   style={{ isolation: "isolate" }}
         >
           {/* <motion.img
                 src="/images/AON.png"
                 alt="AON"
                 className="rounded-xl shadow-lg cursor-pointer w-full h-full object-cover"
               /> */}
-              <Carousel_1 loaded={loaded}/>
+              <Carousel_1/>
         </motion.div>
       </motion.div>
     </div>
