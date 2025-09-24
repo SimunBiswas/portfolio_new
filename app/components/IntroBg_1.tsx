@@ -4,6 +4,7 @@ import { motion, type Variants } from "framer-motion";
 import { Star } from "lucide-react";
 // import { useEffect, useState } from "react";
 import Carousel_1 from "./Carousel_1";
+// import { useState } from "react";
 // import Carousel_1 from "./Carousel_1";
 
 const parentVariants: Variants = {
@@ -137,9 +138,11 @@ const IntroBg_1 = () => {
     //     const timer = setTimeout(() => setLoaded(true), 1000); // first load delay
     //     return () => clearTimeout(timer);
     // }, []);
+    const firstLoad = true
 
   return (
-    <div className="absolute h-full w-screen bg-black flex flex-col">
+    <>
+    {firstLoad ? <div className="absolute h-full w-screen bg-black flex flex-col">
       <motion.div
         key="intro-bg-parent" // ✅ stable identity, avoids remount/re-trigger
         className="relative w-full h-full flex justify-center items-center"
@@ -269,7 +272,10 @@ const IntroBg_1 = () => {
               <Carousel_1/>
         </motion.div>
       </motion.div>
-    </div>
+    </div> 
+    :
+    <Carousel_1/> }
+    </>
   );
 };
 
