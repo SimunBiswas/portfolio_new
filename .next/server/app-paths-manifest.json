@@ -1,3 +1,9 @@
 {
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/(site)/intro/AON/page": "app/(site)/intro/AON/page.js",
+  "/(site)/intro/Jedi/page": "app/(site)/intro/Jedi/page.js",
+  "/(site)/intro/OTWD/page": "app/(site)/intro/OTWD/page.js",
+  "/(site)/intro/Vanguard/page": "app/(site)/intro/Vanguard/page.js",
   "/(site)/page": "app/(site)/page.js"
 }
