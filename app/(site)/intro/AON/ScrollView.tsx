@@ -1,69 +1,141 @@
 "use client";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import AutoCarousel from "@/app/components/AutoCarousel";
+import { Menu, X } from "lucide-react"; // icons
+
+import Section from "@/app/components/Section";
+import { carouselImg } from "../../../data/images";
+import { sectio1nData, section2Data, sectionRef } from "../../../data/tabsData";
+import SectionCarousel from "@/app/components/SectionCarousel";
 
 export default function Page() {
-  const section1Ref = useRef<HTMLDivElement | null>(null);
-  const section2Ref = useRef<HTMLDivElement | null>(null);
-  const section3Ref = useRef<HTMLDivElement | null>(null);
+  // Section labels
+  const sectionNames = sectionRef
 
-  const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+  // Single ref holding all section elements
+  const sectionRefs = useRef<HTMLDivElement[]>([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkScreen = () => setIsMobile(window.innerWidth < 1024 ? true : false);
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
+  const scrollToSection = (index: number) => {
+    sectionRefs.current[index]?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <div className="relative flex justify-end items-start">
-      {/* Navbar */}
-      <div className=" max-h-[100vh] h-[100vh] sticky top-0 left-0 w-[20%] flex flex-col gap-2 bg-black border-r  text-white p-4 z-50 overflow-y-hidden">
-        <button onClick={() => scrollToSection(section1Ref)}>Section 1</button>
-        <button onClick={() => scrollToSection(section2Ref)}>Section 2</button>
-        <button onClick={() => scrollToSection(section3Ref)}>Section 3</button>
+    <div className="relative flex justify-start items-start bg-black text-white ">
+      {/* 🌟 Mobile Navbar Header */}
+      {isMobile && <div className="lg:hidden fixed top-0 left-0 w-full z-50 bg-gray-900 border-b border-gray-700 flex justify-between items-center px-4 py-3">
+        <h2 className="text-lg font-semibold">Menu</h2>
+        <button onClick={() => setIsOpen(!isOpen)} className="focus:outline-none">
+          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>}
+
+      {/* Sticky Navbar */}
+      <div  className={`
+          fixed lg:sticky top-12 lg:top-0 left-0 z-40
+          h-screen lg:h-[80vh] 
+          w-[70%] lg:w-[20%]
+          bg-gray-900 border-r border-gray-700 p-4 
+          flex flex-col gap-3 transition-transform duration-300
+          ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
+        `}>
+        {sectionNames.map((name, index) => (
+          <button
+            key={index}
+            onClick={() => scrollToSection(index)}
+            className="hover:text-pink-400 transition"
+          >
+            {name}
+          </button>
+        ))}
       </div>
 
-     <div className="relative w-[40%] right-0 overflow-y-auto">
-       {/* Sections */}
+      {/* Scrollable Content */}
+      <div className="relative lg:w-[80vw] h-screen overflow-y-auto overflow-x-hidden ">
+        {/* SECTION 1 */}
         <motion.div
-          ref={section1Ref}
-          className="h-screen flex items-center justify-center bg-red-400"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
+           ref={(el) => {
+            if (el) sectionRefs.current[0] = el;
+          }} 
+          className="min-h-screen flex flex-col w-full lg:flex-row items-start justify-center bg-red-950 p-6"
         >
-          Section 1
+          {/* Text content */}
+          <div className="w-full lg:w-1/2 flex flex-col justify-center items-start text-justify space-y-4">
+              {sectio1nData.map((data, index) => (
+                  <Section
+                    key={index}
+                    topic={data.topic}
+                    subtopic={data.subtopic}
+                    content={data.content}
+                  />
+                ))}
+            </div>
+
+          {/* Carousel / Image */}
+          <div className="w-full lg:w-[50%]">
+            <AutoCarousel images={carouselImg} />
+          </div>
         </motion.div>
 
+        {/* SECTION 2 */}
         <motion.div
-          ref={section2Ref}
-          className="h-screen flex items-center justify-center bg-green-400"
-          initial={{ x: 400, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1 }}
+          ref={(el) => {
+            if (el) sectionRefs.current[1] = el;
+          }}          
+          className="min-h-screen flex flex-wrap flex-col lg:flex-row lg:flex-nowrap items-center justify-center p-6 bg-gray-800 text-gray-200"
         >
-          Section 2
+         {section2Data.map((data, index) => (
+            <Section
+              key={index}
+              topic={data.topic}
+              subtopic={data.subtopic}
+              content={data.content}
+              noRepeat={false}
+              yAxis={0}
+              xAxis={100}
+            />
+          ))}
         </motion.div>
 
+        {/* SECTION 3 */}
         <motion.div
-          ref={section3Ref}
-          className="h-screen flex items-center justify-center bg-blue-400 text-white p-12 text-justify"
-          initial={{ scale: 0.8, opacity: 0, transformOrigin: "right" }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1 }}
+          ref={(el) => {
+            if (el) sectionRefs.current[2] = el;
+          }}          
+          className="min-h-screen w-full flex flex-wrap items-center justify-center p-6 bg-gray-700 text-gray-200"
         >
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi eligendi nam nesciunt quod, quidem expedita libero illo, saepe fugiat perferendis accusantium, qui accusamus molestiae ab reprehenderit. Quis doloremque enim, fuga possimus dolorem voluptatum nemo quod error sequi! Beatae labore aperiam id adipisci perferendis sequi accusantium. Vel praesentium labore, omnis, unde reiciendis odit doloribus delectus, temporibus illo quos ducimus est veniam sint. Aliquid numquam, repellendus accusamus nam quidem dolore necessitatibus libero magnam maxime expedita iure quibusdam dolor? Repudiandae, ab sint. Doloribus.
+         {section2Data.map((data, index) => (
+            <Section
+              key={index}
+              topic={data.topic}
+              subtopic={data.subtopic}
+              content={data.content}
+              noRepeat={false}
+              yAxis={100}
+              xAxis={0}
+            />
+          ))}
         </motion.div>
-      </div>
-      <div className="w-[40%] h-screen right-0">
-        <motion.img
-          className="w-full h-full object-contain"
-          src="/images/AON.png"
-          alt="AON"
-          width={800}
-          height={800}
-          initial={{ x: 400, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.25 }}
-        />
+
+        {/* SECTION 4 */}
+        <motion.div
+          ref={(el) => {
+            if (el) sectionRefs.current[3] = el;
+          }}          
+          className="min-h-screen w-full flex flex-wrap items-center justify-center p-6 bg-gray-700 text-gray-200"
+        >
+          <SectionCarousel images={carouselImg}/>
+        </motion.div>
+
       </div>
     </div>
   );

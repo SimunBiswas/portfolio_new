@@ -1,10 +1,11 @@
 "use client";
 
-// import { useEffect, useState } from "react";
-// import IntroBg_1 from "../components/IntroBg_1";
-// import Carousel_1 from "../components/Carousel";
-import IntroBg_1 from "../components/IntroBg_1";
-// import TextCube from '../components/IntroBg_3';
+// import { useEffect, useState } from 'react';
+// import Carousel_1 from '../components/Carousel';
+// import IntroBg_1 from '../components/IntroBg_1';
+// import RotateBlock from "../components/RotateBlock";
+import IntroBg_2 from '../components/IntroBg_2';
+
 
 
 export default function Home() {
@@ -22,9 +23,10 @@ export default function Home() {
 
   return (
     <main className="relative w-screen h-screen overflow-hidden bg-black font-orbitron">
-      <IntroBg_1 />
+      {/* <RotateBlock/> */}
       {/* <TextCube /> */}
       {/* { show ? <IntroBg_1/> : <Carousel_1/>} */}
+      <IntroBg_2/>
     </main>
   );
 }
