@@ -4,7 +4,7 @@
 // import Carousel_1 from '../components/Carousel';
 // import IntroBg_1 from '../components/IntroBg_1';
 // import RotateBlock from "../components/RotateBlock";
-import IntroBg_2 from '../components/IntroBg_2';
+import IntroSection from '../components/IntroBg_2';
 
 
 
@@ -27,7 +27,7 @@ export default function Home() {
       {/* <TextCube /> */}
       {/* { show ? <IntroBg_1/> : <Carousel_1/>} */}
       {/* <IntroBg_2/> */}
-      <IntroBg_2/>
+      <IntroSection/>
     </main>
   );
 }
