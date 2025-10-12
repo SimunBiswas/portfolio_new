@@ -26,6 +26,7 @@ export default function Home() {
       {/* <RotateBlock/> */}
       {/* <TextCube /> */}
       {/* { show ? <IntroBg_1/> : <Carousel_1/>} */}
+      {/* <IntroBg_2/> */}
       <IntroBg_2/>
     </main>
   );
