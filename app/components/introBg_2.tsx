@@ -4,7 +4,7 @@ import RotateBlock from "./RotateBlock";
 import { motion } from "framer-motion";
 // import LoadingScreen from "./LoadingScreen";
 
-export const IntroSection = () => {
+export const IntroBg_2 = () => {
   const headings = [
     "AVINASH MASIH",
     "DESTRUCTION ARTIST",
@@ -151,4 +151,4 @@ export const IntroSection = () => {
   );
 };
 
-export default IntroSection;
+export default IntroBg_2;

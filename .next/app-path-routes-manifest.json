@@ -1,0 +1,9 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/favicon.ico/route": "/favicon.ico",
+  "/(site)/intro/OTWD/page": "/intro/OTWD",
+  "/(site)/intro/Jedi/page": "/intro/Jedi",
+  "/(site)/page": "/",
+  "/(site)/intro/AON/page": "/intro/AON",
+  "/(site)/intro/Vanguard/page": "/intro/Vanguard"
+}
