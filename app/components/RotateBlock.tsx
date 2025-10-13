@@ -4,9 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function RotateBlock() {
-  // const gifs = ["/gif/Jedi_Survivor.gif", "/gif/AON_Intro.gif"];
   const [step, setStep] = useState(0); // 0 = first, 1 = second, 2 = masked
-  // const [key, setKey] = useState(0);
 
   useEffect(() => {
     const animateSequence = async () => {
@@ -14,22 +12,22 @@ export default function RotateBlock() {
       setStep(0);
       await new Promise((r) => setTimeout(r, 2100));
 
-      // 🌀 Step 2: Second GIF
+      // // 🌀 Step 2: Second GIF
       setStep(1);
       await new Promise((r) => setTimeout(r, 2100));
 
       // 🌀 Step 3: Masked Block
       setStep(2);
-      await new Promise((r) => setTimeout(r, 2100));
+      await new Promise((r) => setTimeout(r, 0));
     };
     animateSequence();
   }, []);
 
   return (
-    <div className="relative w-auto h-[20em] flex flex-col gap-10 items-center justify-center overflow-hidden">
+    <div className="relative w-auto h-[22em] flex flex-col gap-10 items-center justify-center overflow-hidden">
       <motion.div
         key={0}
-        className={`absolute w-56 h-56 rounded-full flex items-center justify-center bg-cover bg-center transition-opacity duration-500 ${
+        className={`absolute w-72 h-72 rounded-full flex items-center justify-center bg-cover bg-center transition-opacity duration-500 ${
           0 === step ? "opacity-100" : "opacity-0"
         }`}
         style={{ backgroundImage: `url('/gif/Jedi_Survivor.gif')` }}
@@ -49,10 +47,10 @@ export default function RotateBlock() {
       {/* 🎭 Masked GIF + Overlay (Step 2) */}
       <motion.div
         key={1}
-        className={`relative w-[20em] lg:w-[600px] h-[200px] transition-opacity duration-500 ${
+        className={`relative w-[20em] lg:w-[600px] h-[200px] transition-opacity duration-500  ${
             step === 1 ? "opacity-100" : "opacity-0"
         }`}
-        animate={step === 1 ? { rotateY: [-90, 0, 90] } : {}}
+        animate={step === 1 ? { rotateY: [-90, 0, 90], y : [100, 100, 100] } : {}}
         // animate={step === 1 ? { rotateY: [0, 0, 0] } : {}}
         transition={{
             duration: 2.1,
@@ -95,7 +93,7 @@ export default function RotateBlock() {
       
       <motion.div
         key={2}
-        className={`absolute w-56 h-56 rounded-full flex items-center justify-center bg-cover bg-center transition-opacity duration-500 ${
+        className={`absolute w-72 h-72 rounded-full flex items-center justify-center bg-cover bg-center transition-opacity duration-500 ${
           2 === step ? "opacity-100" : "opacity-0"
         }`}
         style={{ backgroundImage: `url('/gif/AON_Intro.gif')` }}
@@ -106,7 +104,31 @@ export default function RotateBlock() {
             times: [0, 0.6, 1],
           }}
       >
+        <Image className="absolute z-10 translate-y-20 translate-x-4 scale-125" src="/images/Vector.png" alt="AG" width={400} height={300} />
       </motion.div>
+
+      <motion.div
+      className={` ${
+        2 === step ? "opacity-100" : "opacity-0"
+        }`}
+        // initial={{ opacity: 0, x: -180 , y: -235}}
+        animate={2 === step ? { 
+          opacity: [0, 1, 1, 1, 0],
+           x: [-200, -180, -130, -130, -130],
+           y: [-255, -235, -205, -205, -205]
+          } 
+          :
+           {} }
+        // exit={2 === step ? { opacity: 0, x: -180, y: -215,  transition: { duration: 1 } } : { opacity: 0, x: -180, y: -215 }}
+        transition={{
+          delay: 0.3,
+          duration: 1.7,
+         ease: ["easeIn", "linear", "linear", "linear", "easeOut"],
+        times: [0, 0.15, 0.3, 0.7, 1],
+        }}
+        >
+          <Image src="/images/DIVER.png" alt="Diver" width={75} height={75} />
+        </motion.div>
 
     </div>
   );

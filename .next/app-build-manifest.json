@@ -1,59 +1,15 @@
 {
   "pages": {
-    "/_not-found/page": [
-      "static/chunks/webpack-1fd7820af2ad6072.js",
-      "static/chunks/4bd1b696-299743f5624cdabe.js",
-      "static/chunks/684-4c9b19b39c8a75e2.js",
-      "static/chunks/main-app-2f0331170dd54370.js",
-      "static/chunks/app/_not-found/page-edef0fcd75f21114.js"
-    ],
     "/layout": [
-      "static/chunks/webpack-1fd7820af2ad6072.js",
-      "static/chunks/4bd1b696-299743f5624cdabe.js",
-      "static/chunks/684-4c9b19b39c8a75e2.js",
-      "static/chunks/main-app-2f0331170dd54370.js",
-      "static/css/09dd77daeb6b1bae.css",
-      "static/chunks/236-3a39ec07b775f041.js",
-      "static/chunks/app/layout-1df00c2f06a594ee.js"
-    ],
-    "/(site)/intro/Jedi/page": [
-      "static/chunks/webpack-1fd7820af2ad6072.js",
-      "static/chunks/4bd1b696-299743f5624cdabe.js",
-      "static/chunks/684-4c9b19b39c8a75e2.js",
-      "static/chunks/main-app-2f0331170dd54370.js",
-      "static/chunks/app/(site)/intro/Jedi/page-bbafb39a6f590d91.js"
-    ],
-    "/(site)/intro/OTWD/page": [
-      "static/chunks/webpack-1fd7820af2ad6072.js",
-      "static/chunks/4bd1b696-299743f5624cdabe.js",
-      "static/chunks/684-4c9b19b39c8a75e2.js",
-      "static/chunks/main-app-2f0331170dd54370.js",
-      "static/chunks/app/(site)/intro/OTWD/page-01fe6bc3296e45ca.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
     ],
     "/(site)/page": [
-      "static/chunks/webpack-1fd7820af2ad6072.js",
-      "static/chunks/4bd1b696-299743f5624cdabe.js",
-      "static/chunks/684-4c9b19b39c8a75e2.js",
-      "static/chunks/main-app-2f0331170dd54370.js",
-      "static/chunks/236-3a39ec07b775f041.js",
-      "static/chunks/766-296563d3eb52b708.js",
-      "static/chunks/app/(site)/page-e69222af00c39061.js"
-    ],
-    "/(site)/intro/Vanguard/page": [
-      "static/chunks/webpack-1fd7820af2ad6072.js",
-      "static/chunks/4bd1b696-299743f5624cdabe.js",
-      "static/chunks/684-4c9b19b39c8a75e2.js",
-      "static/chunks/main-app-2f0331170dd54370.js",
-      "static/chunks/app/(site)/intro/Vanguard/page-b01d20914ebcc034.js"
-    ],
-    "/(site)/intro/AON/page": [
-      "static/chunks/webpack-1fd7820af2ad6072.js",
-      "static/chunks/4bd1b696-299743f5624cdabe.js",
-      "static/chunks/684-4c9b19b39c8a75e2.js",
-      "static/chunks/main-app-2f0331170dd54370.js",
-      "static/chunks/236-3a39ec07b775f041.js",
-      "static/chunks/650-a34fcc9d6fb4d3e1.js",
-      "static/chunks/app/(site)/intro/AON/page-e3d68ab54a246aa5.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(site)/page.js"
     ]
   }
 }
