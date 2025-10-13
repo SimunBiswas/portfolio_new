@@ -27,29 +27,6 @@ export default function RotateBlock() {
 
   return (
     <div className="relative w-auto h-[20em] flex flex-col gap-10 items-center justify-center overflow-hidden">
-
-      {/* 🔁 Rotating GIFs (Step 0 and 1) */}
-      {/* {gifs.map((gif, i) => (
-        <motion.div
-        key={i}
-        className={`absolute w-56 h-56 rounded-full flex items-center justify-center bg-cover bg-center transition-opacity duration-500 ${
-          i === step ? "opacity-100" : "opacity-0"
-        }`}
-        style={{ backgroundImage: `url(${gif})` }}
-        animate={i === step ? { rotateY: [-90,0, 90] } : {}}
-        transition={{
-            duration: 1.8,
-            ease: ["easeIn", "linear", "easeOut"],
-            times: [0, 0.6, 1],
-          }}
-      >
-          {i === 0 && step === 0 && (
-            <Image src="/images/Vector_1.png" alt="EA" width={100} height={100} />
-          )}
-        </motion.div>
-      ))} */}
-
-
       <motion.div
         key={0}
         className={`absolute w-56 h-56 rounded-full flex items-center justify-center bg-cover bg-center transition-opacity duration-500 ${

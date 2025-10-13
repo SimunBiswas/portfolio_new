@@ -1,281 +1,144 @@
 "use client";
+import React from "react";
+import RotateBlock from "./RotateBlock";
+import { motion } from "framer-motion";
 
-import { motion, type Variants } from "framer-motion";
-import { Star } from "lucide-react";
-// import { useEffect, useState } from "react";
-import Carousel_1 from "./Carousel_1";
-// import { useState } from "react";
-// import Carousel_1 from "./Carousel_1";
+export const IntroBg_1 = () => {
+  const headings = [
+    "AVINASH MASIH",
+    "DESTRUCTION ARTIST",
+    "GAME DEVELOPER",
+    "TECHNICAL ARTIST",
+  ];
 
-const parentVariants: Variants = {
-  hidden: { filter: "blur(20px)", scaleX: 0.25, scaleY: 0.5, opacity: 0 },
-  visible: {
-    filter: "blur(0px)",
-    scaleX: 1,
-    scaleY: 1,
-    opacity: 1,
-    transition: {
-      duration: 1,
-      ease: "easeInOut",
-      when: "beforeChildren",
-      staggerChildren: 0,
-    },
-  },
-};
-
-const childVariants_1: Variants = {
-  hidden: { x: "0%", opacity: 1, scale: 1 },
-  visible: (custom: { direction: number }) => ({
-    x: `${custom.direction * 5}%`,
-    y: `${custom.direction * 325}%`,
-    scale: 5.5,
-    transition: {
-      type: "tween",
-      duration: 7,
-      ease: "easeOut",
-      x: { delay: 0, duration: 0.25 },
-      y: { delay: 7, duration: 2 },
-      scale: { delay: 7.05, duration: 2 },repeat: 0
-    },
-  }),
-};
-
-const childVariants_2: Variants = {
-  hidden: (custom: { initialRight?: number; initialLeft?: number }) => ({
-    opacity: 0,
-    right:
-      custom.initialRight !== undefined ? `${custom.initialRight}%` : undefined,
-    left:
-      custom.initialLeft !== undefined ? `${custom.initialLeft}%` : undefined,
-  }),
-  visible: (custom: {
-    top: number;
-    left?: number;
-    right?: number;
-    rotate: number;
-  }) => ({
-    opacity: 1,
-    top: `${custom.top}%`,
-    left: custom.left !== undefined ? `${custom.left}%` : undefined,
-    right: custom.right !== undefined ? `${custom.right}%` : undefined,
-    rotate: `${custom.rotate}deg`,
-    transition: { type: "tween", duration: 0.25, ease: "easeOut" },
-  }),
-};
-
-const childVariants_3: Variants = {
-  hidden: (custom: { initialRight?: number; initialLeft?: number }) => ({
-    opacity: 0,
-    visibility: "visible",
-    right:
-      custom.initialRight !== undefined ? `${custom.initialRight}%` : undefined,
-    left:
-      custom.initialLeft !== undefined ? `${custom.initialLeft}%` : undefined,
-  }),
-  visible: (custom: {
-    top: number;
-    left?: number;
-    right?: number;
-    rotate: number;
-  }) => ({
-    opacity: 1,
-    visibility: "hidden",
-    top: `${custom.top}%`,
-    left: custom.left !== undefined ? `${custom.left}%` : undefined,
-    right: custom.right !== undefined ? `${custom.right}%` : undefined,
-    rotate: `${custom.rotate}deg`,
-    transition: { type: "tween", duration: 0.25, ease: "easeOut", visibility: {delay : 6.25} },
-  }),
-};
-
-const nested_childVariants_2: Variants = {
-  hidden: {
-    x: 0,
-    y: 0,
-    rotate: "0deg",
-    scale: 1,
-    color: "#fff",
-    visibility: "visible",
-  },
-  visible: (custom: { x: number; y: number; rotate: string; delay: number }) => ({
-    x: [0, custom.x],
-    y: [0, custom.y],
-    scale: [1, 20, 100],
-    rotate: ["0deg", custom.rotate + "deg", custom.rotate + "deg"],
-    color: ["#fff", "#aba9a9", "#000"],
-    visibility: ["visible", "visible", "hidden"],
-    transition: {
-      duration: 1.5,
-      type: "tween",
-      ease: "easeOut",
-      delay: custom.delay,
-    },
-  }),
-};
-
-const carouselVarient: Variants = {
-  hidden: {
-    scale: 0,
-  },
-  visible: {
-    scale: [0, 1, 1],
-    transition: {
-      duration: 1.75,
-      delay: 7.25,
-      times : [0, 0.55, 1],
-      type: "tween",
-      ease: "easeOut",
-      when: "beforeChildren",
-      staggerChildren: 5,
-    },
-  },
-};
-
-const IntroBg_1 = () => {
-    // const [loaded, setLoaded] = useState(false);
-
-    // useEffect(() => {
-    //     const timer = setTimeout(() => setLoaded(true), 1000); // first load delay
-    //     return () => clearTimeout(timer);
-    // }, []);
-    const firstLoad = true
+  const works = [
+    "LOADING ASSETS",
+    "PREPARING ENVIRONMENT",
+    "SETTING UP WORKSPACE",
+    "READY TO CREATE"
+  ]
 
   return (
-    <>
-    {firstLoad ? <div className="absolute h-full w-screen bg-black flex flex-col">
-      <motion.div
-        key="intro-bg-parent" // ✅ stable identity, avoids remount/re-trigger
-        className="relative w-full h-full flex justify-center items-center"
-        variants={parentVariants}
-        initial="hidden"
-        animate="visible"
-        style={{ transformOrigin: "center center" }}
-        viewport={{ once: true }}
-        // onAnimationComplete={() => setLoaded(true)}
-      >
-        {/* First Shape */}
+    <div className="relative w-full h-screen bg-[url('/images/BACKGROUND.png')] bg-cover bg-center font-Hitmarker items-center flex flex-col ">
+      {/* Grid overlay */}
+      <div className="absolute inset-0 bg-[url('/images/Grid.svg')] bg-repeat opacity-40 z-10 w-full h-screen bg-center pointer-events-none"></div>
+
+        {/* Rotate animation block */}
+      <div className="relative w-full h-auto z-100 mt-28">
+        <RotateBlock />
+      </div>
+
+      <div className="relative w-full h-auto items-center flex justify-center z-10 mt-32">
+         {/* Animated headings (1 by 1) */}
+        {headings.map((heading, i) => (
+            <motion.div
+            key={i}
+            className="absolute font-Hitmarker capitalize text-3xl lg:text-7xl text-[#F9CDB9] text-center z-20"
+            initial={{ y: 0, opacity: 0, scale: 1, filter: "blur(50px)" }}
+            animate={{
+                y: [20, 0, -50],
+                opacity: [0, 1, 1, 0], // visible in the middle
+                scale: [1, 1, 1, 0.7],
+                filter: ["blur(0px)", "blur(0px)", "blur(0px)", "blur(10px)"],
+            }}
+            transition={{
+                duration: 2.35,
+                delay: i * 2.0, // 🔥 delay each heading by 2s (tweak as needed)
+                ease: "easeInOut",
+                times: [0, 0.3, 0.9, 1],
+            }}
+            >
+            {/* Text layers */}
+            <div className="relative">
+                <span className="drop-shadow-[2px_9px_76px_rgba(249,205,185,0.5)]">
+                {heading}
+                </span>
+            </div>
+
+            <div className="relative -top-10 lg:-top-16">
+                <span className="text-[#EC682D] font-bold drop-shadow-[2px_9px_76px_rgba(234,254,31,0.5)] blur-[32px]">
+                {heading}
+                </span>
+            </div>
+            </motion.div>
+        ))}
+      </div>
+
+      <div className="relative w-full h-auto text-2xl text-[#FFFFFF]/35 items-center flex justify-center mt-20">
+        INITIALISING WORKSPACE
+      </div>
+
+      <div className="relative w-[90%] flex flex-col justify-center items-center z-10 overflow-visible mt-5 ">
+        <div className="bg-gray-800/50  w-full overflow-visible">
+          {/* solid bar */}
         <motion.div
-          className="absolute bg-transparent"
-          variants={childVariants_1}
-          custom={{ direction: -1 }}
+          className="relative w-[100%] flex justify-center items-center origin-left rounded-full z-20"
+          animate={{ scaleX: [0, 0.5, 1] }}
+          transition={{
+            duration: 6.5,
+            ease: "linear",
+            times: [0, 0.5, 1],
+          }}
         >
-          <div className="text-white bg-black h-full [clip-path:polygon(0_0,100%_0,100%_35%,0_65%)] text-[100px] uppercase flex justify-center items-center">
-            Avinash Masih
-          </div>
+          <div className="w-full h-[18px] bg-[#F87F4A] rounded-full"></div>
         </motion.div>
 
-        {/* Second Shape */}
+        {/* blurred glow */}
         <motion.div
-          className="absolute bg-transparent"
-          variants={childVariants_1}
-          custom={{ direction: 1 }}
+          className="relative w-[102%] flex justify-center items-center z-20 origin-left -mt-5 -left-1"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{
+            duration: 6.5,
+            ease: "linear",
+            times: [0, 0.5, 1],
+          }}
         >
-          <div className="text-white bg-black h-full [clip-path:polygon(0_65%,100%_35%,100%_100%,0_100%)] text-[100px] uppercase flex justify-center items-center">
-            Avinash Masih
-          </div>
+          <div className="w-full h-[18px] bg-[#EC682D] rounded-full blur-[20px] -left-4 pointer-events-none"></div>
         </motion.div>
-
-        {/* Text Layer */}
-        <motion.div className="absolute text-white h-full w-full text-[3px] font-bold uppercase flex justify-center items-center flex-col">
-          {/* Static extra text */}
-          <motion.div
-            className="absolute"
-            variants={childVariants_2}
-            custom={{ top: 55, right: 10, initialRight: 50, rotate: 105 }}
-          >
+        </div>
+      </div>
+      
+      <div className="relative w-full h-auto items-center flex justify-center z-100 mt-14">
+         {/* Animated headings (1 by 1) */}
+        {works.map((work, i) => (
             <motion.div
-              variants={nested_childVariants_2}
-              custom={{ x: -100, y: 750, rotate: -105, delay: 0.5 }}
+            key={i}
+            className="absolute font-Hitmarker capitalize text-lg text-[#FFFFFF]/35 text-center z-20"
+            initial={{ y: 0, opacity: 0, scale: 1, filter: "blur(50px)" }}
+            animate={{
+                y: [30, 0, -60],
+                opacity: [0, 1, 1, 0], // visible in the middle
+                scale: [1, 1, 1],
+                filter: ["blur(50px)", "blur(0px)", "blur(0px)", "blur(10px)"],
+            }}
+            transition={{
+                duration: 2.35,
+                // delay: i * 2.0, // 🔥 delay each heading by 2s (tweak as needed)
+                ease: "easeInOut",
+                times: [0, 0.3, 0.7, 1],
+                delay: i === 0 ? 0.75 : i * 2.0 + 0.5, // Start first word a bit earlier
+
+            }}
             >
-              Destruction
+            {/* Text layers */}
+            <div className="relative top-[70%]">
+                <span >
+                {work}
+                </span>
+            </div>
+
+            {/* <div className="relative -top-16">
+                <span className="text-[#EC682D] font-bold drop-shadow-[2px_9px_76px_rgba(234,254,31,0.5)] blur-[32px]">
+                {work}
+                </span>
+            </div> */}
             </motion.div>
-          </motion.div>
+        ))}
+      </div>
 
-          <motion.div
-            className="absolute"
-            variants={childVariants_2}
-            custom={{ top: 45, left: 10, initialLeft: 50, rotate: -65 }}
-          >
-            <motion.div
-              variants={nested_childVariants_2}
-              custom={{ x: -85, y: 850, rotate: 65, delay: 2 }}
-            >
-              Procedural
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            className="absolute"
-            variants={childVariants_2}
-            custom={{ top: 45, right: 10, initialRight: 50, rotate: 45 }}
-          >
-            <motion.div
-              variants={nested_childVariants_2}
-              custom={{ x: -700, y: 400, rotate: -45, delay: 3.5 }}
-            >
-              Automation
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            className="absolute"
-            variants={childVariants_2}
-            custom={{ top: 55, left: 10, initialLeft: 50, rotate: -115 }}
-          >
-            <motion.div
-              variants={nested_childVariants_2}
-              custom={{ x: -600, y: 600, rotate: 115, delay: 5 }}
-            >
-              Pipeline
-            </motion.div>
-          </motion.div>
-
-          {/* Static dots */}
-          <motion.div
-            className="absolute h-[8px] w-[8px] bg-white"
-            variants={childVariants_3}
-            custom={{ top: 49, left: 12, initialLeft: 50, rotate: -115 }}
-          />
-          <motion.div
-            className="absolute h-[15px] w-[15px] bg-white rounded-full"
-            variants={childVariants_3}
-            custom={{ top: 52, left: 12, initialLeft: 50, rotate: -115 }}
-          />
-          <motion.div
-            className="absolute h-[10px] w-[10px] bg-white"
-            variants={childVariants_3}
-            custom={{ top: 50, right: 9, initialRight: 50, rotate: -115 }}
-          />
-          <motion.div
-            className="absolute bg-transparent"
-            variants={childVariants_3}
-            custom={{ top: 45, right: 14, initialRight: 50, rotate: -115 }}
-          >
-            <Star fill="#fff" className="text-white w-2 h-2" />
-          </motion.div>
-        </motion.div>
-
-        {/* Carousel Layer */}
-        <motion.div
-          className="absolute w-full h-full top-0 left-0 flex justify-center items-center"
-          variants={carouselVarient}
-        //   initial={{ scale: 0.75, zIndex: -10 }}
-        //   animate={loaded ? { scale: 1, zIndex: 10 } : {}} // 👈 only animate if parent done
-        //   transition={{ duration: 2, delay: 7.95, ease: "easeIn", when: "beforeChildren" , staggerChildren: 5}}
-        //   style={{ isolation: "isolate" }}
-        >
-          {/* <motion.img
-                src="/images/AON.png"
-                alt="AON"
-                className="rounded-xl shadow-lg cursor-pointer w-full h-full object-cover"
-              /> */}
-              <Carousel_1/>
-        </motion.div>
-      </motion.div>
-    </div> 
-    :
-    <Carousel_1/> }
-    </>
+      
+    </div>
   );
 };
 

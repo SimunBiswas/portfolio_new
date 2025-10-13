@@ -2,7 +2,6 @@
 import React from "react";
 import RotateBlock from "./RotateBlock";
 import { motion } from "framer-motion";
-// import LoadingScreen from "./LoadingScreen";
 
 export const IntroBg_2 = () => {
   const headings = [
@@ -99,15 +98,7 @@ export const IntroBg_2 = () => {
         </motion.div>
         </div>
       </div>
-
-
-      {/* <div className="absolute w-full h-10 top-[75%]">
-        <LoadingScreen/>
-      </div> */}
-
-
-
-
+      
       <div className="relative w-full h-auto items-center flex justify-center z-100 mt-14">
          {/* Animated headings (1 by 1) */}
         {works.map((work, i) => (
