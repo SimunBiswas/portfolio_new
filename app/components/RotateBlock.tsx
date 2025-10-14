@@ -93,7 +93,7 @@ export default function RotateBlock() {
       
       <motion.div
         key={2}
-        className={`absolute w-72 h-72 rounded-full flex items-center justify-center bg-cover bg-center transition-opacity duration-500 ${
+        className={`absolute w-64 h-64 rounded-full flex items-center justify-center bg-cover bg-center transition-opacity duration-500 ${
           2 === step ? "opacity-100" : "opacity-0"
         }`}
         style={{ backgroundImage: `url('/gif/AON_Intro.gif')` }}
