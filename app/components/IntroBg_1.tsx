@@ -25,12 +25,12 @@ export const IntroBg_1 = () => {
       <div className="absolute inset-0 bg-[url('/images/Grid.svg')] bg-repeat opacity-40 z-10 pointer-events-none"></div>
 
       {/* ⚙️ Rotate animation block */}
-      <div className="relative w-full flex justify-center items-center z-20 mt-[5vh] lg:mt-[8vh]">
+      <div className="relative w-full flex justify-center items-center z-20 mt-[3vh] lg:mt-[8vh]">
         <RotateBlock />
       </div>
 
       {/* 🌀 Animated Headings */}
-      <div className="relative w-full flex flex-col justify-center items-center text-center mt-[10vh] md:mt-[15vh] z-30">
+      <div className="relative w-full flex flex-col justify-center items-center text-center mt-[6vh] md:mt-[15vh] z-30">
         {headings.map((heading, i) => (
           <motion.div
             key={i}
