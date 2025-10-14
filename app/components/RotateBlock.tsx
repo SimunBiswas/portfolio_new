@@ -10,15 +10,15 @@ export default function RotateBlock() {
     const animateSequence = async () => {
       // 🌀 Step 1: First GIF
       setStep(0);
-      await new Promise((r) => setTimeout(r, 2100));
+      await new Promise((r) => setTimeout(r, 2330));
 
       // // 🌀 Step 2: Second GIF
       setStep(1);
-      await new Promise((r) => setTimeout(r, 2100));
+      await new Promise((r) => setTimeout(r, 2330));
 
       // 🌀 Step 3: Masked Block
       setStep(2);
-      await new Promise((r) => setTimeout(r, 0));
+      await new Promise((r) => setTimeout(r, 2330));
     };
     animateSequence();
   }, []);
@@ -113,7 +113,7 @@ export default function RotateBlock() {
         }`}
         // initial={{ opacity: 0, x: -180 , y: -235}}
         animate={2 === step ? { 
-          opacity: [0, 1, 1, 1, 0],
+          opacity: [0, 1, 1, 0, 0],
            x: [-200, -180, -130, -130, -130],
            y: [-255, -235, -205, -205, -205]
           } 
@@ -122,7 +122,7 @@ export default function RotateBlock() {
         // exit={2 === step ? { opacity: 0, x: -180, y: -215,  transition: { duration: 1 } } : { opacity: 0, x: -180, y: -215 }}
         transition={{
           delay: 0.3,
-          duration: 1.7,
+          duration: 2,
          ease: ["easeIn", "linear", "linear", "linear", "easeOut"],
         times: [0, 0.15, 0.3, 0.7, 1],
         }}
