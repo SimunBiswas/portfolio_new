@@ -50,8 +50,8 @@ export default function RotateBlock() {
         className={`relative w-[20em] lg:w-[600px] h-[200px] transition-opacity duration-500 -translate-y-4  ${
             step === 1 ? "opacity-100" : "opacity-0"
         }`}
-        animate={step === 1 ? { rotateY: [-90, 0, 90], y : [100, 100, 100] } : {}}
-        // animate={step === 1 ? { rotateY: [0, 0, 0] } : {}}
+        // animate={step === 1 ? { rotateY: [-90, 0, 90], y : [100, 100, 100] } : {}}
+        animate={step === 1 ? { rotateY: [-90, 0, 90] } : {}}
         transition={{
             duration: 2.16,
             ease: ["easeIn", "linear", "easeOut"],
