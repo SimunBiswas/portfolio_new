@@ -24,10 +24,10 @@ export default function RotateBlock() {
   }, []);
 
   return (
-    <div className="relative w-auto h-[20em] lg:h-[22em] flex flex-col gap-10 items-center justify-center overflow-hidden">
+    <div className="relative w-full h-[20em] lg:h-[22em] flex flex-col items-center justify-center overflow-hidden">
       <motion.div
         key={0}
-        className={`absolute w-72 h-72 rounded-full flex items-center justify-center bg-cover bg-center transition-opacity duration-500 ${
+        className={`absolute w-80 h-80 rounded-full flex items-center justify-center bg-cover bg-center transition-opacity duration-500 ${
           0 === step ? "opacity-100" : "opacity-0"
         }`}
         style={{ backgroundImage: `url('/gif/Jedi_Survivor.gif')` }}

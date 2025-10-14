@@ -861,6 +861,12 @@ video {
 .h-\[clamp\(400px\2c 100vh\2c 800px\)\] {
   height: clamp(400px,100vh,800px);
 }
+.h-\[clamp\(200px\2c 100vh\2c 800px\)\] {
+  height: clamp(200px,100vh,800px);
+}
+.h-80 {
+  height: 20rem;
+}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -917,6 +923,9 @@ video {
 }
 .w-screen {
   width: 100vw;
+}
+.w-80 {
+  width: 20rem;
 }
 .max-w-3xl {
   max-width: 48rem;
@@ -1051,6 +1060,9 @@ video {
 }
 .overflow-x-hidden {
   overflow-x: hidden;
+}
+.overflow-y-hidden {
+  overflow-y: hidden;
 }
 .truncate {
   overflow: hidden;
@@ -1720,6 +1732,10 @@ body {
 
   .md\:mt-\[10vh\] {
     margin-top: 10vh;
+  }
+
+  .md\:mt-\[15vh\] {
+    margin-top: 15vh;
   }
 
   .md\:h-\[200px\] {

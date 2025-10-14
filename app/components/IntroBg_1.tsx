@@ -19,7 +19,7 @@ export const IntroBg_1 = () => {
   ];
 
   return (
-    <div className="relative w-full h-[clamp(400px,100vh,800px)] bg-[url('/images/BACKGROUND.png')] bg-cover bg-center font-Hitmarker flex flex-col justify-center items-center overflow-hidden">
+    <div className="relative w-full h-screen bg-[url('/images/BACKGROUND.png')] bg-cover bg-center font-Hitmarker flex flex-col justify-center items-center overflow-y-hidden">
 
       {/* 🔳 Grid overlay (keep as is) */}
       <div className="absolute inset-0 bg-[url('/images/Grid.svg')] bg-repeat opacity-40 z-10 pointer-events-none"></div>
@@ -30,7 +30,7 @@ export const IntroBg_1 = () => {
       </div>
 
       {/* 🌀 Animated Headings */}
-      <div className="relative w-full flex flex-col justify-center items-center text-center mt-[15vh] z-30">
+      <div className="relative w-full flex flex-col justify-center items-center text-center mt-[10vh] md:mt-[15vh] z-30">
         {headings.map((heading, i) => (
           <motion.div
             key={i}
