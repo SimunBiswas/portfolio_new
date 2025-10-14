@@ -65,7 +65,7 @@ export const IntroBg_1 = () => {
       </div>
 
       {/* 🧩 Initialising Workspace */}
-      <div className="relative mt-[10vh] md:mt-[10vh] text-[clamp(0.9rem,1.5vw,1.5rem)] text-[#FFFFFF]/35 text-center z-20">
+      <div className="relative mt-[8vh] md:mt-[10vh] text-[clamp(0.9rem,1.5vw,1.5rem)] text-[#FFFFFF]/35 text-center z-20">
         INITIALISING WORKSPACE
       </div>
 
