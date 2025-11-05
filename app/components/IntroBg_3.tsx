@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export default function RotatingTextCube({
+export default function IntroBg_3({
     size = 200,
     duration = 2,
     delay = 1,

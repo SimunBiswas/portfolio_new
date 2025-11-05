@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useCallback, useEffect } from "react";
 import Button from "./Button";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const images = [
   { src: "/images/AON.png", title: "AON", href: "/intro/AON", grad_from : "#83D9F4", grad_via : "#3C7E9E", grad_to: "#000B13" },
@@ -75,7 +75,7 @@ const Carousel_1 = () => {
   };
 
   return (
-    <div className="flex items-center justify-center flex-col h-screen bg-[#0f0f0f] relative overflow-hidden w-full">
+    <div className="flex items-center justify-center flex-col h-screen bg-transparent relative overflow-hidden w-full">
       {/* Carousel Container */}
       <div className="relative w-[120%] h-full flex justify-center items-center cursor-pointer">
         {/* Left Curved Gradient Overlay */}
@@ -118,6 +118,8 @@ const Carousel_1 = () => {
               {isCenter && (
               <AnimatePresence>
                 <motion.div
+                      key="center-bg"
+
                   initial={{ opacity: 0 }}
                   animate={{ opacity: isHovered ? 1 : 0 }}
                   exit={{ opacity: 0 }}
@@ -142,7 +144,7 @@ const Carousel_1 = () => {
                   className="absolute w-full h-full top-0 text-white rounded-lg flex justify-between items-end bg-gradient-to-b from-transparent to-black/60"
                 >
                   <div className="w-full flex justify-between items-center pb-2">
-                    <div className="uppercase tracking-wider font-semibold z-10 ps-9">
+                    <div className="uppercase tracking-wider font-light z-10 ps-9">
                       {img.title}
                     </div>
                     <div className="scale-75 z-10">
@@ -160,16 +162,16 @@ const Carousel_1 = () => {
 
       {/* Navigation Buttons */}
       <button
-        className="absolute left-8 top-1/2 -translate-y-1/2 z-[60] bg-black/40 p-2 rounded-full hover:bg-black/60"
+        className="absolute left-[45%] top-[93%] -translate-y-1/2 z-[60] bg-black/40 p-2 rounded-full hover:bg-black/60"
         onClick={() => paginate(-1)}
       >
-        <ArrowLeft className="text-white w-6 h-6" />
+        <ChevronLeft className="text-white w-6 h-6" />
       </button>
       <button
-        className="absolute right-8 top-1/2 -translate-y-1/2 z-[60] bg-black/40 p-2 rounded-full hover:bg-black/60"
+        className="absolute right-[45%] top-[93%] -translate-y-1/2 z-[60] bg-black/40 p-2 rounded-full hover:bg-black/60"
         onClick={() => paginate(1)}
       >
-        <ArrowRight className="text-white w-6 h-6" />
+        <ChevronRight className="text-white w-6 h-6" />
       </button>
 
       
