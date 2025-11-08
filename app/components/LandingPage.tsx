@@ -8,6 +8,7 @@ import Carousel_1 from "./Carousel";
 import WorkCards from "./WorkCards";
 import Marquee from "./Marquee";
 import Colaborate from "./Colaborate";
+import Footer from "./Footer";
 
 export default function ParallaxSticky() {
   const ref = useRef(null);
@@ -57,13 +58,14 @@ export default function ParallaxSticky() {
       <div className="sticky top-0 h-auto w-full z-50">
         <motion.div
           style={{ y: fgY }}
-          className="w-full max-w-full text-white text-center space-y-10"
+          className="w-full max-w-full text-white text-center space-y-14"
         >
           <Carousel_1/>
           {/* Featured Work */}          
           <WorkCards/>
           <Marquee/>
           <Colaborate/>
+          <Footer/>
         </motion.div>
       </div>
 
