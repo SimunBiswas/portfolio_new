@@ -5,6 +5,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 import Image from "next/image";
 import Carousel_1 from "./Carousel";
+import WorkCards from "./WorkCards";
+import Marquee from "./Marquee";
+import Colaborate from "./Colaborate";
 
 export default function ParallaxSticky() {
   const ref = useRef(null);
@@ -18,6 +21,9 @@ export default function ParallaxSticky() {
 
   // Foreground scrolls slower
   const fgY = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
+
+  // Planet scrolls slower
+  // const planetY = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
 
   return (
     <section ref={ref} className="relative h-[400vh] w-full overflow-hidden">
@@ -36,16 +42,33 @@ export default function ParallaxSticky() {
         />
       </motion.div>
 
+      {/* <motion.div className='absolute z-50 -top-12'
+      style={{ y: planetY }}>
+              <Image
+                    src="/images/Planet.png"
+                    alt="Small Planet"
+                    fill
+                    className="object-cover overflow-hidden"
+                    priority
+                  />
+        </motion.div> */}
+
       {/* Foreground - sticky */}
-      <div className="sticky top-0 h-screen flex justify-center items-center w-full">
+      <div className="sticky top-0 h-auto w-full z-50">
         <motion.div
           style={{ y: fgY }}
           className="w-full max-w-full text-white text-center space-y-10"
         >
           <Carousel_1/>
+          {/* Featured Work */}          
+          <WorkCards/>
+          <Marquee/>
+          <Colaborate/>
         </motion.div>
       </div>
-     </ReactLenis>
+
+    </ReactLenis>
     </section>
   );
 }
+
