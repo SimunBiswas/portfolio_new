@@ -16,7 +16,7 @@ const Card: React.FC<CardProps> = ({title, src}) => {
               alt="Work 2"
               width={200}
               height={100}
-              objectFit="cover"
+              objectFit="object-cover"
             />
         </div>
         <div className=' h-auto'>
@@ -25,7 +25,7 @@ const Card: React.FC<CardProps> = ({title, src}) => {
               alt="Work 1"
               width={200}
               height={100}
-              objectFit="cover"
+              objectFit="object-cover"
             />
         </div>
         <div className='absolute w-[200px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[8em] z-10'>
@@ -34,7 +34,7 @@ const Card: React.FC<CardProps> = ({title, src}) => {
                 alt="Work 1"
                 width={500}
                 height={200}
-                objectFit="cover"
+                objectFit="object-cover"
                 />
         </div>
         <h1 className='text-white text-2xl uppercase font-extralight'>{title}</h1>

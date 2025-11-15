@@ -31,11 +31,12 @@ export const IntroBg_1: React.FC<IntroBgProps> = ({ onFinish }) => {
   }, [onFinish]);
 
   return (
-    <motion.div className={`relative w-full h-screen font-Hitmarker flex flex-col justify-center items-center overflow-hidden origin-top
+      <div className="bg-[url('/images/starsbg.png')] bg-cover bg-center h-screen w-full fixed inset-0 -z-20" >
+      <motion.div className={`relative w-full h-screen font-Hitmarker flex flex-col justify-center items-center overflow-hidden origin-top
       `}
       // ${visibility ? 'block' : 'hidden'}
         initial={{ opacity: 1, scaleY: 1, y: 0 }}
-        animate={{ opacity: 1, scaleY: 0, y: "-100vh" }}
+        animate={{ opacity: 1, scaleY: 1, y: "-100vh" }}
         transition={{ duration: 2.5, ease: "easeOut", delay: 9 }}>
 
       {/* <motion.div
@@ -46,7 +47,7 @@ export const IntroBg_1: React.FC<IntroBgProps> = ({ onFinish }) => {
       > */}
         {/* 🔳 Grid overlay (keep as is) */}
         <motion.div className="absolute inset-0 bg-[url('/images/Grid.svg')] bg-repeat bg-center opacity-40 z-10 pointer-events-none"
-         animate={{ opacity: [1, 1, 0] }}
+         animate={{ opacity: [1, 1, 1] }}
          transition={{ duration: 1.5, ease: "easeOut", delay: 8, times: [0, 0.8, 1] }}
          >
          </motion.div>
@@ -153,6 +154,8 @@ export const IntroBg_1: React.FC<IntroBgProps> = ({ onFinish }) => {
         {/* </motion.div > */}
       </motion.div>
     </motion.div>
+    </div>
+    
   );
 };
 

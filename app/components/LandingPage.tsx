@@ -7,7 +7,6 @@ import Image from "next/image";
 import Carousel_1 from "./Carousel";
 import WorkCards from "./WorkCards";
 import Marquee from "./Marquee";
-import Colaborate from "./Colaborate";
 import Footer from "./Footer";
 
 export default function ParallaxSticky() {
@@ -64,7 +63,7 @@ export default function ParallaxSticky() {
           {/* Featured Work */}          
           <WorkCards/>
           <Marquee/>
-          <Colaborate/>
+          {/* <Colaborate/> */}
           <Footer/>
         </motion.div>
       </div>
