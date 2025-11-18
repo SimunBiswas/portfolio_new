@@ -31,7 +31,7 @@ export const IntroBg_1: React.FC<IntroBgProps> = ({ onFinish }) => {
   }, [onFinish]);
 
   return (
-      <div className="bg-[url('/images/starsbg.png')] bg-cover bg-center h-screen w-full fixed inset-0 -z-20" >
+      <div className="bg-black bg-cover bg-center h-screen w-full fixed inset-0 -z-20" >
       <motion.div className={`relative w-full h-screen font-Hitmarker flex flex-col justify-center items-center overflow-hidden origin-top
       `}
       // ${visibility ? 'block' : 'hidden'}

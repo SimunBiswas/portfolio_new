@@ -17,24 +17,45 @@ export default function ParallaxSticky() {
   });
 
   // Background scrolls faster
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "-140%"]);
+  const bgstarsY = useTransform(scrollYProgress, [0, 1], ["0%", "-140%"]);
+
+  // Background scrolls faster
+  const smstarsY = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
 
   // Foreground scrolls slower
   const fgY = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
 
-  // Planet scrolls slower
-  // const planetY = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+  // planet scrolls slower
+  const planetY = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
 
   return (
     <section ref={ref} className="relative h-[400vh] w-full overflow-hidden">
      <ReactLenis root>
-         {/* Background parallax */}
+      
+      
+      {/* Background parallax */}
+
+      {/* Big stars */}
       <motion.div
-        style={{ y: bgY }}
+        style={{ y: bgstarsY }}
         className="absolute inset-0 z-0"
       >
         <Image
-          src="/images/starsbg.png"
+          src="/images/STARS_BIG.png"
+          alt="Space background"
+          fill
+          className="object-cover overflow-hidden"
+          priority
+        />
+      </motion.div>
+
+      {/* Small stars bg */}
+      <motion.div
+        style={{ y: smstarsY }}
+        className="absolute inset-0 z-0"
+      >
+        <Image
+          src="/images/Star_Small.png"
           alt="Space background"
           fill
           className="object-cover overflow-hidden"
@@ -61,7 +82,7 @@ export default function ParallaxSticky() {
         >
           <Carousel_1/>
           {/* Featured Work */}          
-          <WorkCards/>
+          <WorkCards y={planetY}/>
           <Marquee/>
           {/* <Colaborate/> */}
           <Footer/>

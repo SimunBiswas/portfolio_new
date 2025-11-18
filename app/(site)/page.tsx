@@ -5,44 +5,63 @@ import IntroBg_1 from "../components/IntroBg_1";
 import LandingPage from "../components/LandingPage";
 
 export default function Home() {
+
+  // 🔒 scroll lock controller
+  const [lockScroll, setLockScroll] = useState(true);
+
+  // 🎬 intro visibility controller
   const [showIntro, setShowIntro] = useState(true);
 
-  // Lock body scroll during intro
+  // lock + unlock scroll
   useEffect(() => {
-    document.body.style.overflow = showIntro ? "hidden" : "auto";
+    document.body.style.overflow = lockScroll ? "hidden" : "visible";
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "visible";
     };
-  }, [showIntro]);
+  }, [lockScroll]);
 
   return (
-    <main className="w-screen h-auto font-Hitmarker relative overflow-hidden">
+    <main className="relative w-screen h-auto font-Hitmarker">
 
-      {/* ⭐ BACKGROUND (always behind) */}
-      {/* <div className="bg-[url('/images/starsbg.png')] bg-cover bg-center h-screen w-full fixed inset-0 -z-20" /> */}
-
-      {/* ⭐ LANDING PAGE (loaded immediately, but hidden behind intro) */}
-      {/* Landing Page Slides Up */}
-      <motion.div
-        initial={{ y: "100vh", opacity :1 }} // 👈 Start off-screen below
-        animate={{ y: "1vh" , opacity : 1}}       // 👆 Slide up into view
-        transition={{ duration: 2.5, ease: "linear", delay: 9 }} // delay syncs with Intro scale-down
-        // className="absolute top-0 left-0 w-full"
-
+      {/* LANDING PAGE WRAPPER */}
+      <div
+        className={`absolute top-0 left-0 w-full z-10 
+        ${lockScroll ? " overflow-hidden" : "overflow-visible"}`}
       >
-        <LandingPage />
-      </motion.div>
+        {/* LANDING PAGE ANIMATION */}
+        <motion.div
+          style={{ willChange: "transform" }}
+          initial={{ y: "100%" }}
+          animate={{ y: "0%" }}
+          transition={{
+            duration: 2.5,
+            ease: [0, 0, 1, 1],
+            delay: 8.5,
+          }}
+          onAnimationComplete={() => {
+            setLockScroll(false);
+          }}  // ⭐ Unlock scroll HERE
+        >
+          <LandingPage />
+        </motion.div>
+      </div>
 
-      {/* ⭐ INTRO OVERLAY (on top) */}
-      <motion.div
-        initial={{ opacity: 1, scaleY: 1 }}
-        animate={{ opacity: 0, scaleY: 0 }}
-        transition={{ duration: 2.5, ease: "linear", delay: 9 }}
-        className="absolute inset-0 z-20 origin-top"
-      >
-        <IntroBg_1 onFinish={() => setShowIntro(false)} />
-      </motion.div>
-
+      {/* INTRO OVERLAY */}
+      {showIntro && (
+        <motion.div
+          className="absolute inset-0 z-20 origin-top"
+          initial={{ opacity: 1, scaleY: 1 }}
+          animate={{ opacity: 0, scaleY: 0 }}
+          transition={{
+            duration: 2.5,
+            ease: [0, 0, 1, 1],
+            delay: 9,
+          }}
+          onAnimationComplete={() => setShowIntro(false)} // remove intro only
+        >
+          <IntroBg_1 />
+        </motion.div>
+      )}
     </main>
   );
 }
