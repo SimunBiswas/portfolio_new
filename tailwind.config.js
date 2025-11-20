@@ -22,9 +22,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        // orbitron: ['var(--font-orbitron)', 'sans-serif'], // ✅ correct variable
-        // geist: ['var(--font-geist-sans)', 'sans-serif'],
-        // mono: ['var(--font-geist-mono)', 'monospace'],
+        orbitron: ['var(--font-orbitron)', 'sans-serif'], // ✅ correct variable
+        geist: ['var(--font-geist-sans)', 'sans-serif'],
+        mono: ['var(--font-geist-mono)', 'monospace'],
         Hitmarker : ['Hitmarker', 'sans-serif'],
       },
     },

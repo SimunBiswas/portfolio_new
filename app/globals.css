@@ -20,27 +20,35 @@
     --foreground: #ededed;
   }
 }
+
+@font-face {
+  font-family: 'Hitmarker';
+  src: url('/font/hitmarker/HitmarkerText-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: lighter;
+}
+
+@font-face {
+  font-family: 'Hitmarker';
+  src: url('/font/hitmarker/HitmarkerText-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: light;
+}
+
+
+@font-face {
+  font-family: 'Hitmarker';
+  src: url('/font/hitmarker/HitmarkerText-Bold.ttf') format('truetype');
+  font-weight: 900;
+  font-style: bold;
+}
 /* 
 @font-face {
   font-family: 'Hitmarker';
-  src: url('/font/hitmarker/HitmarkerNormal-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Hitmarker';
-  src: url('/font/hitmarker/HitmarkerNormal-Bold.ttf') format('truetype');
-  font-weight: 700;
+  src: url('/font/hitmarker/HitmarkerNormal-Medium.ttf') format('truetype');
+  font-weight: normal;
   font-style: normal;
 } */
-
-@font-face {
-  font-family: 'Hitmarker';
-  src: url('/font/hitmarker/HitmarkerNormal-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-}
 
 body {
   background: var(--background);

@@ -128,7 +128,7 @@ export default function FramerMotionMarquee({
           sm:gap-10    /* small tablets */
           md:gap-16    /* tablets */
           lg:gap-24    /* laptops */
-          xl:gap-32    /* desktop */
+          xl:gap-28    /* desktop */
         "
       >
         {displayItems.map((src, idx) => (
@@ -136,8 +136,8 @@ export default function FramerMotionMarquee({
             <Image
               src={src}
               alt={`marquee-${idx}`}
-              width={200}
-              height={200}
+              width={100}
+              height={100}
               draggable={false}
               className="
                 object-contain drop-shadow-xl
@@ -147,7 +147,7 @@ export default function FramerMotionMarquee({
                 sm:w-16
                 md:w-20
                 lg:w-24
-                xl:w-28
+                xl:w-24
               "
             />
           </div>

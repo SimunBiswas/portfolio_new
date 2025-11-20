@@ -68,13 +68,14 @@ const Card: React.FC<CardProps> = ({ title, src }) => {
 
 
 interface WorkCardsProps {
-  y: MotionValue<string>;
+  smally: MotionValue<string>;
+  bigy: MotionValue<string>;
 }
 
-const WorkCards: React.FC<WorkCardsProps> = ({ y }) => {
+const WorkCards: React.FC<WorkCardsProps> = ({ smally, bigy }) => {
   return (
     <div className='relative w-screen h-auto mx-auto flex flex-col justify-center items-center '>
-      <span className='uppercase text-[#EC682D] text-[25px] lg:text-[30px] pb-10'>Featured work</span>
+      <span className='uppercase text-[#EC682D] text-[25px] lg:text-[30px] pb-10 font-bold font-orbitron'>Featured work</span>
       <div className="flex justify-center items-center gap-6 sm:gap-12 md:gap-20 lg:gap-32">
         <Card title={"Destruction"} src={"/images/Gears.png"} />
         <Card title={"Tools"} src={"/images/Gears.png"} />
@@ -97,16 +98,31 @@ const WorkCards: React.FC<WorkCardsProps> = ({ y }) => {
       </div>
       <div className="absolute inset-0 bg-[url('/images/Grid.svg')] bg-repeat bg-center z-20 pointer-events-none opacity-[36%]">
       </div>
-      <motion.div className='absolute inset-0 y-0 -left-10 -translate-y-32 overflow-hidden'
-        style={{ y: y }}>
-        <Image
-              src="/images/Planet.svg"
-              alt="Small Planet"
-              fill
-              className="object-cover overflow-hidden"
-              priority
-            />
-      </motion.div>
+        <motion.div className='absolute inset-0 y-0 -right-[100%] -translate-y-40 overflow-hidden'
+          style={{ y: smally }}>
+          <Image
+                src="/images/Planet_1.png"
+                alt="Small Planet"
+                width={500}
+                height={500}
+                className="object-cover overflow-hidden"
+                priority
+              />
+        </motion.div>
+
+        <motion.div className='absolute inset-0 y-0 overflow-hidden top-80'
+          style={{ y: bigy }}>
+          <Image
+                src="/images/Planet2.png"
+                alt="Small Planet"
+                width={150}
+                height={150}
+                className="object-contain overflow-hidden"
+                priority
+              />
+        </motion.div>
+
+      
     </div>
   )
 }

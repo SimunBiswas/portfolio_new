@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 const orbitron = Orbitron({
   variable: "--font-orbitron",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500", "700"], 
 })
 
 export const metadata: Metadata = {

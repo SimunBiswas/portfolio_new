@@ -38,13 +38,6 @@ export const IntroBg_1: React.FC<IntroBgProps> = ({ onFinish }) => {
         initial={{ opacity: 1, scaleY: 1, y: 0 }}
         animate={{ opacity: 1, scaleY: 1, y: "-100vh" }}
         transition={{ duration: 2.5, ease: "easeOut", delay: 9 }}>
-
-      {/* <motion.div
-      className="w-full flex flex-col justify-center items-center relative"
-        initial={{ opacity: 1, scaleY: 1, y: 0 }}
-        animate={{ opacity: 0, scaleY: 0.95, y: "-30vh" }}
-        transition={{ duration: 2.5, ease: "easeOut", delay: 9, times: [0, 0.5, 1] }}
-      > */}
         {/* 🔳 Grid overlay (keep as is) */}
         <motion.div className="absolute inset-0 bg-[url('/images/Grid.svg')] bg-repeat bg-center opacity-40 z-10 pointer-events-none"
          animate={{ opacity: [1, 1, 1] }}
