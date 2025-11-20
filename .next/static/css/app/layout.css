@@ -661,6 +661,10 @@ video {
 .inset-0 {
   inset: 0px;
 }
+.inset-x-0 {
+  left: 0px;
+  right: 0px;
+}
 .-left-1 {
   left: -0.25rem;
 }
@@ -763,6 +767,9 @@ video {
 .-bottom-16 {
   bottom: -4rem;
 }
+.right-\[100\%\] {
+  right: 100%;
+}
 .-z-10 {
   z-index: -10;
 }
@@ -819,6 +826,10 @@ video {
 .my-auto {
   margin-top: auto;
   margin-bottom: auto;
+}
+.mx-14 {
+  margin-left: 3.5rem;
+  margin-right: 3.5rem;
 }
 .-mt-5 {
   margin-top: -1.25rem;
@@ -949,8 +960,44 @@ video {
 .h-\[125vh\] {
   height: 125vh;
 }
+.h-\[400vh\] {
+  height: 400vh;
+}
+.h-\[450vh\] {
+  height: 450vh;
+}
+.h-\[550vh\] {
+  height: 550vh;
+}
+.h-\[300vh\] {
+  height: 300vh;
+}
+.h-\[150vh\] {
+  height: 150vh;
+}
+.h-\[350vh\] {
+  height: 350vh;
+}
+.h-\[120vh\] {
+  height: 120vh;
+}
+.h-\[800vh\] {
+  height: 800vh;
+}
+.h-\[10000vh\] {
+  height: 10000vh;
+}
 .min-h-screen {
   min-height: 100vh;
+}
+.min-h-\[160vh\] {
+  min-height: 160vh;
+}
+.min-h-\[60vh\] {
+  min-height: 60vh;
+}
+.min-h-\[80vh\] {
+  min-height: 80vh;
 }
 .w-1 {
   width: 0.25rem;
@@ -1026,6 +1073,9 @@ video {
 }
 .w-screen {
   width: 100vw;
+}
+.w-2 {
+  width: 0.5rem;
 }
 .max-w-3xl {
   max-width: 48rem;
@@ -1168,6 +1218,12 @@ video {
 .justify-between {
   justify-content: space-between;
 }
+.justify-around {
+  justify-content: space-around;
+}
+.justify-items-stretch {
+  justify-items: stretch;
+}
 .gap-10 {
   gap: 2.5rem;
 }
@@ -1197,6 +1253,11 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+.space-y-20 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(5rem * var(--tw-space-y-reverse));
 }
 .overflow-hidden {
   overflow: hidden;
@@ -1285,6 +1346,14 @@ video {
 .border-white\/50 {
   border-color: rgb(255 255 255 / 0.5);
 }
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
+}
+.border-red-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(252 165 165 / var(--tw-border-opacity, 1));
+}
 .bg-\[\#2c2b2b\] {
   --tw-bg-opacity: 1;
   background-color: rgb(44 43 43 / var(--tw-bg-opacity, 1));
@@ -1350,6 +1419,10 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+.bg-\[\#ff8146\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 129 70 / var(--tw-bg-opacity, 1));
 }
 .bg-\[url\(\"\/images\/PLANET_AND_GRADIENT\.png\"\)\] {
   background-image: url("/images/PLANET_AND_GRADIENT.png");
@@ -1533,6 +1606,14 @@ video {
 .py-52 {
   padding-top: 13rem;
   padding-bottom: 13rem;
+}
+.px-16 {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+.px-14 {
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
 }
 .pb-0 {
   padding-bottom: 0px;

@@ -17,7 +17,7 @@ export default function ParallaxSticky() {
   });
 
   // Background scrolls faster
-  const bgstarsY = useTransform(scrollYProgress, [0, 1], ["0%", "-140%"]);
+  const bgstarsY = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
 
   // Background scrolls faster
   const smstarsY = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
@@ -30,15 +30,15 @@ export default function ParallaxSticky() {
   const planetbigY = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
 
   return (
-    <section ref={ref} className="relative h-[125vh] w-full overflow-hidden">
-     <ReactLenis root>
+    <section ref={ref} className="relative h-[120vh] w-full overflow-hidden">
+     <ReactLenis root options={{ smoothWheel: true, wheelMultiplier: 0.3 }}>
       
       {/* Background parallax */}
 
       {/* Big stars */}
       <motion.div
         style={{ y: bgstarsY }}
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 overflow-hidden h-[400vh]"
       >
         <Image
           src="/images/STARS_BIG.png"
@@ -52,7 +52,7 @@ export default function ParallaxSticky() {
       {/* Small stars bg */}
       <motion.div
         style={{ y: smstarsY }}
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 overflow-hidden h-[400vh]"
       >
         <Image
           src="/images/Star_Small.png"
@@ -64,7 +64,7 @@ export default function ParallaxSticky() {
       </motion.div>
 
       {/* Foreground - sticky */}
-      <div className="sticky top-0 h-[100vh] w-full z-50">
+      <div className="sticky top-0 h-auto w-full z-50 overflow-hidden">
         <motion.div
           style={{ y: fgY }}
           className="w-full max-w-full h-auto text-white text-center space-y-14"

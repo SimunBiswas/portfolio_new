@@ -98,7 +98,7 @@ const WorkCards: React.FC<WorkCardsProps> = ({ smally, bigy }) => {
       </div>
       <div className="absolute inset-0 bg-[url('/images/Grid.svg')] bg-repeat bg-center z-20 pointer-events-none opacity-[36%]">
       </div>
-        <motion.div className='absolute inset-0 y-0 -right-[100%] -translate-y-40 overflow-hidden'
+        <motion.div className='absolute inset-0 y-0 right-[100%] -translate-y-40 overflow-hidden'
           style={{ y: smally }}>
           <Image
                 src="/images/Planet_1.png"

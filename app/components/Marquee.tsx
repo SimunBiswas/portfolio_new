@@ -1,26 +1,15 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import React from "react";
 import Image from "next/image";
 
 type MarqueeProps = {
   images?: string[];
-  baseSpeed?: number; // base speed (mobile speed)
 };
 
-export default function FramerMotionMarquee({
+export default function StaticMarquee({
   images = [],
-  baseSpeed = 80, // default mobile speed
 }: MarqueeProps) {
-  const trackRef = useRef<HTMLDivElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const controls = useAnimation();
-
-  const [distance, setDistance] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [currentSpeed, setCurrentSpeed] = useState(baseSpeed);
-
   // default images
   const defaultImages = [
     "/images/marquee/PYTHON1.png",
@@ -33,96 +22,25 @@ export default function FramerMotionMarquee({
   ];
 
   const imgs = images.length ? images : defaultImages;
-  const displayItems = [...imgs, ...imgs];
-
-  // Auto-adjust speed by screen size
-  useEffect(() => {
-    const updateSpeed = () => {
-      const w = window.innerWidth;
-
-      if (w < 640) setCurrentSpeed(baseSpeed * 0.8);       // Mobile slower
-      else if (w < 768) setCurrentSpeed(baseSpeed * 1.0);  // Tablet normal
-      else if (w < 1024) setCurrentSpeed(baseSpeed * 1.3); // Laptop faster
-      else if (w < 1440) setCurrentSpeed(baseSpeed * 1.6); // Desktop faster
-      else setCurrentSpeed(baseSpeed * 2.0);               // Big screens fastest
-    };
-
-    updateSpeed();
-    window.addEventListener("resize", updateSpeed);
-    return () => window.removeEventListener("resize", updateSpeed);
-  }, [baseSpeed]);
-
-  // Main animation logic
-  useEffect(() => {
-    function calculateDistance() {
-      if (!trackRef.current || !containerRef.current) return;
-
-      const trackWidth = trackRef.current.scrollWidth;
-      const containerWidth = containerRef.current.offsetWidth;
-
-      const needed = trackWidth / 2;
-      const finalDistance = Math.max(needed, containerWidth);
-
-      setDistance(finalDistance);
-
-      const duration = finalDistance / currentSpeed;
-
-      controls.start({
-        x: [0, -finalDistance],
-        transition: {
-          x: { repeat: Infinity, ease: "linear", duration },
-        },
-      });
-    }
-
-    calculateDistance();
-
-    const ro = new ResizeObserver(calculateDistance);
-    if (trackRef.current) ro.observe(trackRef.current);
-    if (containerRef.current) ro.observe(containerRef.current);
-
-    return () => ro.disconnect();
-  }, [imgs.join("|"), currentSpeed]);
-
-  // Pause / play on hover
-  useEffect(() => {
-    if (isPaused) {
-      controls.stop();
-      return;
-    }
-
-    if (distance > 0) {
-      const duration = distance / currentSpeed;
-      controls.start({
-        x: [0, -distance],
-        transition: {
-          x: { repeat: Infinity, ease: "linear", duration },
-        },
-      });
-    }
-  }, [isPaused, distance, currentSpeed]);
 
   return (
     <div
-      ref={containerRef}
       className="
-        w-[90%] 
-        overflow-hidden cursor-pointer
-        py-4 sm:py-6 md:py-8 lg:py-10
-        mx-10 md:mx-4 lg:mx-20
+        w-[100%] 
+        overflow-hidden
+       flex justify-between items-center
       "
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="absolute h-[160px] w-1 border-s-8 border-r-8 border-[#ff8146] blur-xl -translate-x-[6px]"/>
-      <div className="absolute h-[160px] right-[4%] md:right-[2%] w-1 border-s-8 border-r-8 border-[#ff8146] blur-xl -translate-x-[6px]"/>
-      <motion.div
-        ref={trackRef}
-        animate={controls}
-        style={{ willChange: "transform" }}
+      {/* Side blur bars */}
+      <div className="absolute w-full flex justify-between items-center pointer-events-none ">
+        <div className="w-1 h-[160px] border-s-8 border-r-8 border-2 border-[#ff8146] mx-14 blur-xl"></div>
+        <div className="w-1 h-[160px] border-s-8 border-r-8 border-2 border-[#ff8146] mx-14 blur-xl"></div>
+      </div>
+      {/* STATIC IMAGES (NO MOTION) */}
+      <div
         className="
-          flex items-center whitespace-nowrap
-
+          flex items-center justify-center whitespace-nowrap
+          w-full
           /* Responsive gap between items */
           gap-6        /* mobile */
           sm:gap-10    /* small tablets */
@@ -131,7 +49,7 @@ export default function FramerMotionMarquee({
           xl:gap-28    /* desktop */
         "
       >
-        {displayItems.map((src, idx) => (
+        {imgs.map((src, idx) => (
           <div key={idx} className="flex-shrink-0 select-none">
             <Image
               src={src}
@@ -146,13 +64,13 @@ export default function FramerMotionMarquee({
                 w-12   /* mobile */
                 sm:w-16
                 md:w-20
-                lg:w-24
-                xl:w-24
+                lg:w-22
+                xl:w-22
               "
             />
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
