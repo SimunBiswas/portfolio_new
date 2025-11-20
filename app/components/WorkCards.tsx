@@ -57,7 +57,7 @@ const Card: React.FC<CardProps> = ({ title, src }) => {
       </div>
 
       <div>
-        <h1 className="text-white text-sm lg:text-2xl uppercase font-extralight text-center">
+        <h1 className="text-white text-sm lg:text-2xl uppercase font-extralight text-center pt-6">
           {title}
         </h1>
       </div>
@@ -75,7 +75,7 @@ interface WorkCardsProps {
 const WorkCards: React.FC<WorkCardsProps> = ({ smally, bigy }) => {
   return (
     <div className='relative w-screen h-auto mx-auto flex flex-col justify-center items-center '>
-      <span className='uppercase text-[#EC682D] text-[25px] lg:text-[30px] pb-10 font-bold font-orbitron'>Featured work</span>
+      <span className='uppercase text-[#EC682D] text-[25px] lg:text-[40px] pb-10 font-bold font-orbitron'>Featured work</span>
       <div className="flex justify-center items-center gap-6 sm:gap-12 md:gap-20 lg:gap-32">
         <Card title={"Destruction"} src={"/images/Gears.png"} />
         <Card title={"Tools"} src={"/images/Gears.png"} />
@@ -98,8 +98,8 @@ const WorkCards: React.FC<WorkCardsProps> = ({ smally, bigy }) => {
       </div>
       <div className="absolute inset-0 bg-[url('/images/Grid.svg')] bg-repeat bg-center z-20 pointer-events-none opacity-[36%]">
       </div>
-        <motion.div className='absolute inset-0 y-0 right-[100%] -translate-y-40 overflow-hidden'
-          style={{ y: smally }}>
+        <motion.div className='absolute inset-0 y-0 translate-x-40 overflow-hidden'
+          style={{ y: smally, x: 1080 }}>
           <Image
                 src="/images/Planet_1.png"
                 alt="Small Planet"
@@ -110,7 +110,7 @@ const WorkCards: React.FC<WorkCardsProps> = ({ smally, bigy }) => {
               />
         </motion.div>
 
-        <motion.div className='absolute inset-0 y-0 overflow-hidden top-80'
+        <motion.div className='absolute inset-0 overflow-hidden top-[650px]'
           style={{ y: bigy }}>
           <Image
                 src="/images/Planet2.png"

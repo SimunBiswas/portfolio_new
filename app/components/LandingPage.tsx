@@ -8,6 +8,7 @@ import Carousel_1 from "./Carousel";
 import WorkCards from "./WorkCards";
 import Marquee from "./Marquee";
 import Footer from "./Footer";
+import Profile from "./Profile";
 
 export default function ParallaxSticky() {
   const ref = useRef(null);
@@ -27,7 +28,7 @@ export default function ParallaxSticky() {
 
   // planet scrolls slower
   const planetsmallY = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
-  const planetbigY = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+  const planetbigY = useTransform(scrollYProgress, [0, 1], ["0%", "-90%"]);
 
   return (
     <section ref={ref} className="relative h-[120vh] w-full overflow-hidden">
@@ -67,8 +68,9 @@ export default function ParallaxSticky() {
       <div className="sticky top-0 h-auto w-full z-50 overflow-hidden">
         <motion.div
           style={{ y: fgY }}
-          className="w-full max-w-full h-auto text-white text-center space-y-14"
+          className="w-full max-w-full h-auto text-white text-center space-y-12"
         >
+          <Profile/>
           <Carousel_1/>
           {/* Featured Work */}          
           <WorkCards smally={planetsmallY} bigy={planetbigY}/>

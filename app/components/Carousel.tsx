@@ -79,11 +79,11 @@ const Carousel_1 = () => {
       {/* Carousel Container */}
       <div className="relative w-[120%] h-full flex justify-center items-center cursor-pointer">
         {/* Left Curved Gradient Overlay */}
-        <div className="pointer-events-none absolute left-0 top-0 w-[20%] h-full z-50 
+        <div className="pointer-events-none absolute left-0 top-0 w-[20%] h-full z-40 
                         bg-gradient-to-r from-[#0f0f0f] to-transparent rounded-tr-[200px] rounded-br-[200px]" />
 
         {/* Right Curved Gradient Overlay */}
-        <div className="pointer-events-none absolute right-0 top-0 w-[20%] h-full z-50 
+        <div className="pointer-events-none absolute right-0 top-0 w-[20%] h-full z-40
                         bg-gradient-to-l from-[#0f0f0f] to-transparent rounded-tl-[200px] rounded-bl-[200px]" />
         {images.map((img, i) => {
           let variant: keyof typeof imageVariants = "hidden";
@@ -162,13 +162,13 @@ const Carousel_1 = () => {
 
       {/* Navigation Buttons */}
       <button
-        className="absolute left-[45%] top-[93%] -translate-y-1/2 z-[60] bg-black/40 p-2 rounded-full hover:bg-black/60"
+        className="absolute left-[7%] top-[60%] -translate-y-1/2 z-[60] bg-black/40 p-2 rounded-full hover:bg-black/60"
         onClick={() => paginate(-1)}
       >
         <ChevronLeft className="text-white w-6 h-6" />
       </button>
       <button
-        className="absolute right-[45%] top-[93%] -translate-y-1/2 z-[60] bg-black/40 p-2 rounded-full hover:bg-black/60"
+        className="absolute right-[7%] top-[60%] -translate-y-1/2 z-[60] bg-black/40 p-2 rounded-full hover:bg-black/60"
         onClick={() => paginate(1)}
       >
         <ChevronRight className="text-white w-6 h-6" />
