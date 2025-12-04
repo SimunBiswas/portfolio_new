@@ -4,6 +4,7 @@
 import { motion } from "framer-motion";
 // import IntroBg_1 from "../components/IntroBg_1";
 import LandingPage from "../components/LandingPage";
+import Footer from "../components/Footer";
 
 export default function Home() {
   // INTRO + SCROLL CONTROL
@@ -60,7 +61,7 @@ export default function Home() {
 
       {/* REST OF PAGE (SCROLLS NORMALLY) */}
       <section className="relative z-0 w-full">
-        {/* Put ParallaxSticky or other content here */}
+        <Footer setVisible={() => {}} />
       </section>
     </main>
   );

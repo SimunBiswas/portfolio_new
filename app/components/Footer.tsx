@@ -1,7 +1,12 @@
 import React from 'react'
 import Image from 'next/image';
 
-const Footer = () => {
+interface FooterInterface {
+  setVisible: (visible: boolean) => void;
+}
+
+
+const Footer: React.FC<FooterInterface> = ({ setVisible }) => {
   return (
     <div className="relative flex flex-col w-full items-center">
 
@@ -44,7 +49,9 @@ const Footer = () => {
           <ul className='leading-8'>
             <li>PROJECTS</li>
             <li>FEATURED WORK</li>
-            <li>ABOUT</li>
+            <li onClick={() => setVisible(true)} className='cursor-pointer'>
+              ABOUT
+            </li>
           </ul>
         </div>
       </div>

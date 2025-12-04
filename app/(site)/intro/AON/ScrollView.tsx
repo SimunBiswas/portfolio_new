@@ -17,6 +17,7 @@ export default function Page() {
   const sectionRefs = useRef<HTMLDivElement[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false)
+  const [activeSection, setActiveSection] = useState(0)
 
   useEffect(() => {
     const checkScreen = () => setIsMobile(window.innerWidth < 1024 ? true : false);
@@ -27,10 +28,11 @@ export default function Page() {
 
   const scrollToSection = (index: number) => {
     sectionRefs.current[index]?.scrollIntoView({ behavior: "smooth" });
+    setActiveSection(index)
   };
 
   return (
-    <div className="relative flex justify-start items-start bg-black text-white ">
+    <div className="relative flex justify-start items-start bg-black text-white gap-6 ">
       {/* 🌟 Mobile Navbar Header */}
       {isMobile && <div className="lg:hidden fixed top-0 left-0 w-full z-50 bg-gray-900 border-b border-gray-700 flex justify-between items-center px-4 py-3">
         <h2 className="text-lg font-semibold">Menu</h2>
@@ -44,15 +46,20 @@ export default function Page() {
           fixed lg:sticky top-12 lg:top-0 left-0 z-40
           h-screen lg:h-[80vh] 
           w-[70%] lg:w-[20%]
-          bg-gray-900 border-r border-gray-700 p-4 
+          bg-[#121212] rounded-lg
           flex flex-col gap-3 transition-transform duration-300
+          border-[0.5px] border-[#EC682D]/50
           ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
         `}>
+        <span className="text-[#EC682D] text-center text-[16px] font-hitmarker p-4 font-bold">SECTIONS</span>
         {sectionNames.map((name, index) => (
           <button
             key={index}
-            onClick={() => scrollToSection(index)}
-            className="hover:text-pink-400 transition"
+            onClick={() => {
+              scrollToSection(index);
+              console.log(index);
+            }}
+            className={`transition p-2 uppercase text-white bold ${activeSection === index ? "bg-[#EC682D]" : "bg-transparent"}`}
           >
             {name}
           </button>
@@ -60,13 +67,13 @@ export default function Page() {
       </div>
 
       {/* Scrollable Content */}
-      <div className="relative lg:w-[80vw] h-screen overflow-y-auto overflow-x-hidden ">
+      <div className="relative lg:w-[80vw] h-screen overflow-y-auto overflow-x-hidden rounded-lg border-[0.1px] border-[#EC682D]/50">
         {/* SECTION 1 */}
         <motion.div
            ref={(el) => {
             if (el) sectionRefs.current[0] = el;
           }} 
-          className="min-h-screen flex flex-col w-full lg:flex-row items-start justify-center bg-red-950 p-6"
+          className="min-h-screen flex flex-col w-full lg:flex-row items-start justify-center bg-[#121212] p-6"
         >
           {/* Text content */}
           <div className="w-full lg:w-1/2 flex flex-col justify-center items-start text-justify space-y-4">

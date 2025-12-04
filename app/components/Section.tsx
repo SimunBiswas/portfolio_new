@@ -17,7 +17,7 @@ const Section = ({ topic, subtopic, content, yAxis, xAxis, delayTime = 0 }: Sect
   const subtopicWords = subtopic?.trim().split(" ") || [];
 
   return (
-    <div className="space-y-3 w-full flex flex-col flex-wrap p-4">
+    <div className="space-y-3 w-full flex flex-col flex-wrap p-4 bg-[#121212] rounded-lg ">
     {/* Topic */}
     <div className="flex flex-wrap gap-2">
     {words.map((word, index) => (
@@ -36,7 +36,7 @@ const Section = ({ topic, subtopic, content, yAxis, xAxis, delayTime = 0 }: Sect
     </div>
 
     {/* Subtopic */}
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-2 ">
     {subtopicWords.map((word, index) => (
         <motion.span
         key={`subtopic-${index}`}

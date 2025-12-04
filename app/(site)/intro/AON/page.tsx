@@ -12,21 +12,35 @@ const VerticalTabs = () => {
   return (
     <div className="w-full text-white overflow-x-hidden">
       {/* Title (sticky) */}
-      <div className="sticky top-0 left-0 z-50">
-        <div className="flex justify-center items-start w-[100%] p-6 bg-black/30 border-b border-gray-300 text-3xl font-light tracking-wide ">
-          <Topic title={"AON - ABYSS OF NEPTUNE"}/>
+      <div className="sticky top-0 left-0 z-50 px-36">
+        {/* Top buttons */}
+        
+
+        {/* Topic */}
+        <div className="bg-black/30 font-hitmarker tracking-wide ">
+          <div className="flex flex-col justify-start items-start w-[75%] p-6 bg-black/30 font-hitmarker tracking-wide ">
+
+            <div className="flex justify-start items-center py-4 gap-10 ">
+              <div className="text-white font-Hitmarker bg-[#EC682D] px-2 py-[0.5px] rounded-lg border-[1px] border-[#ffb896] uppercase">First-Personel Survivor</div>
+              <div className="text-white font-Hitmarker bg-[#EC682D] px-2 py-[0.5px] rounded-lg border-[1px] border-[#ffb896] uppercase">Horror</div>
+              <div className="text-white font-Hitmarker bg-[#41720F] px-2 py-[0.5px] rounded-lg border-[1px] border-[#C6FDB9] uppercase">Released</div>
+            </div>
+
+            <Topic title={"AON - ABYSS OF NEPTUNE"}/>
+            <p className="text-[14px] leading-7 pb-4">A first person underwater survival horror experience coming to Steam this April. You are part of D.I.V.E.S. (Divers Investigating Various External Signals), a government-funded organization that sends deep-sea divers to investigate mysterious underwater signals throughout the world.</p>
+          </div>
         </div>
         {/* Tabs (sticky under title) */}
-        <div className="sticky top-[40px] bg-black z-40">
-          <div className="flex justify-center items-center p-2 border-b border-gray-700">
+        <div className="sticky top-[40px] bg-black z-40 w-full">
+          <div className="flex justify-center items-center p-1 rounded-full border-[1px] border-[#EC682D] gap-5">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActive(tab)}
-                className={`relative px-4 py-2 text-left transition-colors ${
+                className={`w-full relative px-4 py-[1px] text-center transition-colors text-white rounded-xl  ${
                   active === tab
-                    ? "text-pink-500 font-semibold"
-                    : "text-gray-400 hover:text-white"
+                    ? "bg-[#EC682D] border-[0.5px] border-[#EC682D]"
+                    : "bg-transparent hover:text-white"
                 }`}
               >
                 {tab}

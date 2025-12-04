@@ -17,7 +17,7 @@ const Topic = ({ title, delayTime = 0 }: TopicProps) => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.3, delay: delayTime + index * 0.15 }}
           style={{ transformOrigin: "bottom" }}
-          className="text-white text-xl font-semibold"
+          className="text-white text-2xl font-light font-Hitmarker py-10"
           viewport={{ once: true }}
 
         >

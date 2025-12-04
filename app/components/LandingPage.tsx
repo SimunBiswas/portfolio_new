@@ -81,7 +81,7 @@ export default function ParallaxSticky() {
           <WorkCards smally={planetsmallY} bigy={planetbigY} />
           <Marquee />
           {/* <Colaborate/> */}
-          <Footer/>
+          <Footer setVisible={setVisible}/>
         </motion.div>
       </div>
 
