@@ -11,6 +11,10 @@ import Footer from "./Footer";
 import Profile from "./Profile";
 
 export default function ParallaxSticky() {
+
+  const [hover, setHover] = React.useState(false);
+  const [visible, setVisible] = React.useState(false); 
+  
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -28,6 +32,7 @@ export default function ParallaxSticky() {
 
   // planet scrolls slower
   const planetsmallY = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+
   const planetbigY = useTransform(scrollYProgress, [0, 1], ["0%", "-90%"]);
 
   return (
@@ -65,16 +70,16 @@ export default function ParallaxSticky() {
       </motion.div>
 
       {/* Foreground - sticky */}
-      <div className="sticky top-0 h-auto w-full z-50 overflow-hidden">
+      <div className={`sticky top-0 h-auto w-full z-50 overflow-hidden `}>
         <motion.div
           style={{ y: fgY }}
           className="w-full max-w-full h-auto text-white text-center space-y-12"
         >
-          <Profile/>
-          <Carousel_1/>
-          {/* Featured Work */}          
-          <WorkCards smally={planetsmallY} bigy={planetbigY}/>
-          <Marquee/>
+          <Profile hover={hover} setHover={setHover} visible={visible} setVisible={setVisible} />
+          <Carousel_1 visible={visible}/>
+          {/* Featured Work */}
+          <WorkCards smally={planetsmallY} bigy={planetbigY} />
+          <Marquee />
           {/* <Colaborate/> */}
           <Footer/>
         </motion.div>

@@ -12,7 +12,13 @@ const images = [
   { src: "/images/Vanguard.png", title: "Call of Duty Vanguard", href: "/intro/Vanguard", grad_from : "#FCCAAB", grad_via : "#5A4A1F", grad_to: "#110B0C" },
 ];
 
-const Carousel_1 = () => {
+interface Carousel_1Props {
+  visible: boolean;
+}
+
+// const Carousel_1: React.FC<Carousel_1Props> = ({ hover, setHover, visible, setVisible }) => {
+
+const Carousel_1: React.FC<Carousel_1Props> = ({ visible }) => {
   const [centerIndex, setCenterIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [clickDisabled, setClickDisabled] = useState(false);
@@ -165,7 +171,10 @@ const Carousel_1 = () => {
         className="absolute left-[7%] top-[60%] -translate-y-1/2 z-[60] bg-black/40 p-2 rounded-full hover:bg-black/60"
         onClick={() => paginate(-1)}
       >
-        <ChevronLeft className="text-white w-6 h-6" />
+        <ChevronLeft className={`text-white w-6 h-6 ${
+          visible ? "hidden" : "block"
+        }`}
+         />
       </button>
       <button
         className="absolute right-[7%] top-[60%] -translate-y-1/2 z-[60] bg-black/40 p-2 rounded-full hover:bg-black/60"
